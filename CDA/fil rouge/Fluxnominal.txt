@@ -1,0 +1,54 @@
+Flux nominal (Scénario principal)
+Commande d'un produit par un client
+
+    Le client (Particulier ou Professionnel) accède au catalogue.
+    Il sélectionne une catégorie de produits.
+    Il choisit une sous-catégorie.
+    Il sélectionne un produit.
+    Il consulte la fiche produit.
+    Il ajoute le produit au panier.
+    Il choisit la quantité souhaitée.
+    Il valide son panier.
+    Il renseigne ses informations de livraison et de facturation.
+    Il choisit un mode de paiement (carte bancaire pour les particuliers, virement/chèque pour les professionnels).
+    Le paiement est validé.
+    Une facture est générée.
+    Un bon de livraison est généré.
+    La commande est enregistrée et transmise au service logistique.
+    La commande est expédiée.
+    La commande est facturée en totalité, même si elle est expédiée partiellement.
+
+
+
+    Flux alternatifs
+Cas 1 : Le client annule sa commande avant paiement
+
+    Le client accède à son panier.
+    Il supprime les produits du panier.
+    La commande est annulée.
+
+Cas 2 : Le paiement échoue
+
+    Le client tente un paiement en ligne.
+    Le paiement est refusé par la banque.
+    Le client est invité à réessayer avec un autre moyen de paiement.
+
+Cas 3 : Produit en rupture de stock
+
+    Le client ajoute un produit au panier.
+    Lors de la validation, il est informé que le produit est en rupture de stock.
+    Il peut choisir d’être notifié du réapprovisionnement ou de commander un produit similaire.
+
+Cas 4 : Commande partiellement expédiée
+
+    Le client commande plusieurs articles.
+    Certains articles sont en stock, d'autres non.
+    Une expédition partielle est effectuée.
+    Plusieurs bons de livraison sont générés.
+    Une seule facture est émise pour la commande entière.
+
+Cas 5 : Réduction négociée pour un client professionnel
+
+    Un client professionnel passe une commande.
+    Le service commercial applique une réduction sur le total.
+    La facture reflète cette réduction négociée.
