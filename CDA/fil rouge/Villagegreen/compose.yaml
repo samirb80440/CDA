@@ -26,6 +26,17 @@ services:
       - 1025:1025
       - 8025:8025
 
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Afpa1234
+    ports:
+      - 27018:27017
+    volumes:
+      - ./sampledata.archive:/sampledata.archive
+
 volumes:
   data:
     driver: local
