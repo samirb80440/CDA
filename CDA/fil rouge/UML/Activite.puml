@@ -1,0 +1,45 @@
+@startuml commande
+start
+
+:Utilisateur navigue sur le site;
+:Utilisateur ajoute un produit au panier;
+:Affichage du panier mis à jour;
+
+if (L'utilisateur modifie la quantité ?) then (Oui)
+    :Mettre à jour la quantité;
+    :Afficher le panier mis à jour;
+endif
+
+:Utilisateur clique sur "Commander";
+if (L'utilisateur est connecté ?) then (Non)
+    :Rediriger vers la page de connexion;
+    :Utilisateur se connecte;
+endif
+
+:Affichage de la page de création de commande;
+:Utilisateur sélectionne les adresses de livraison et facturation;
+:Vérifier le type de client;
+
+if (Le client est un particulier ?) then (Oui)
+    :Afficher la page de paiement;
+    :Utilisateur saisit les informations de paiement;
+    
+    if (Paiement valide ?) then (Oui)
+        :Valider la commande;
+    else (Non)
+        :Afficher un message d'erreur;
+        stop
+    endif
+else (Non)
+    :Appliquer une réduction si négociée;
+    :Valider la commande;
+endif
+
+:Affichage du statut de la commande;
+:Génération de la facture;
+:Envoi de la facture au client;
+:Préparation de l'expédition;
+:Confirmation et suivi de l'expédition;
+
+stop
+@enduml

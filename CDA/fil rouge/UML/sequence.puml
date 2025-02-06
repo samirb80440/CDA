@@ -1,0 +1,42 @@
+@startuml Commande
+actor Utilisateur
+participant "Système e-commerce" as Systeme
+participant "Service facturation" as Facturation
+
+Utilisateur -> Systeme: Clique sur "Ajouter au panier"
+Systeme -> Utilisateur: Affiche le panier avec les produits ajoutés
+
+Utilisateur -> Systeme: Augmente la quantité du produit
+Systeme -> Systeme: Met à jour la quantité souhaitée
+Systeme -> Utilisateur: Affiche le panier mis à jour
+
+Utilisateur -> Systeme: Clique sur "Commander"
+Systeme -> Systeme: Vérifie si l'utilisateur est connecté
+note right of Systeme
+Le client est connecté.
+end note
+
+Systeme -> Utilisateur: Affiche la page de création de commande avec les adresses
+
+Utilisateur -> Systeme: Sélectionne l'adresse de livraison et facturation
+Systeme -> Systeme: Met à jour les informations et vérifie le type de client
+
+note right of Systeme
+Le client est un particulier.
+end note
+
+Systeme -> Utilisateur: Affiche la page de paiement avec les informations de la commande
+
+Utilisateur -> Systeme: Saisit la méthode de paiement et les informations nécessaires
+
+alt Vérification du paiement
+    Systeme -> Systeme: Vérifie la validité des informations
+    Systeme -> Systeme: Valide la commande si paiement accepté
+end
+
+Systeme -> Utilisateur: Affiche la page de statut des commandes
+
+Systeme -> Facturation: Génère la facture
+Facturation --> Systeme: Facture créée
+Systeme -> Utilisateur: Affiche la facture
+@enduml

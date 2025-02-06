@@ -1,0 +1,85 @@
+@startuml Commande
+class Utilisateur {
+    + Id_utili: VARCHAR(50) [PK]
+    + nom_cli: VARCHAR(50)
+    + cate_cli: BOOLEAN
+    + coeff_cli: INT
+    + num_telephone: VARCHAR(50)
+    + mot_de_passe: VARCHAR(50)
+}
+
+class Bon_de_livraison {
+    + Id_Bon_de_livraison: VARCHAR(50) [PK]
+    + num_livrais: VARCHAR(50)
+    + logo_entreprise: VARCHAR(10)
+    + date_liv_com: DATE
+}
+
+class Commande {
+    + Id_prod: VARCHAR(50) [PK]
+    + prix_achat_com: DECIMAL(7,2)
+    + prix_vente_com: DECIMAL(7,2)
+    + condition_reg: BOOLEAN
+    + date_fact: DATE
+    + num_fact: VARCHAR(50)
+    + reduction: DECIMAL(5,2)
+    + com_exp: BOOLEAN
+    + num_com: VARCHAR(50)
+    + nom_com: VARCHAR(50)
+    + date_com: DATE
+    + total_ttc: INT
+    + taux_tva: DECIMAL(5,2)
+    + adresse_livrai: VARCHAR(50)
+    + prix_htva: INT
+    + indic_reduc: BOOLEAN
+    + total_htva: INT
+    + adresse_factu: VARCHAR(50)
+}
+
+class Fournisseur {
+    + Id_Fournisseur: VARCHAR(50) [PK]
+    + nom_fournisseur: VARCHAR(100)
+    + contact_fournisseur: VARCHAR(100)
+    + adresse_fournisseur: VARCHAR(50)
+    + telephone_fournisseur: VARCHAR(50)
+}
+
+class Sous_categorie {
+    + Id_Sous_categorie: VARCHAR(50) [PK]
+    + image_sous_categorie: VARCHAR(50)
+    + nom_sous_categorie: VARCHAR(50)
+}
+
+class Categorie {
+    + Id_Categorie: VARCHAR(50) [PK]
+    + nom_categorie: VARCHAR(50)
+    + image_categorie: VARCHAR(50)
+}
+
+class Produit {
+    + Id_Produit: VARCHAR(50) [PK]
+    + prix_achat: VARCHAR(20)
+    + nom_prod: VARCHAR(50)
+    + stock_prod: INT
+    + photo_produit: VARCHAR(60)
+    + lib_court_prod: VARCHAR(50)
+    + lib_long_prod: VARCHAR(200)
+}
+
+class Quantite {
+    + quantite: INT
+}
+
+
+Utilisateur "1" -- "0..*" Commande : passe
+Commande "1" -- "1" Bon_de_livraison : génère
+Commande "0..*" -- "0..*" Produit : contient
+Bon_de_livraison "1" -- "0..*" Produit : inclut
+Fournisseur "1" -- "0..*" Produit : fournit
+Sous_categorie "1" -- "0..*" Categorie : contient
+Categorie "1" -- "0..*" Produit : classe
+
+
+
+
+@enduml
