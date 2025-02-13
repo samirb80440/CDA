@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -64,6 +66,25 @@ class Commande
 
     #[ORM\Column(length: 150)]
     private ?string $adresseFactu = null;
+
+    #[ORM\ManyToOne(inversedBy: 'commande')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Utilisateur $utilisateur = null;
+
+    #[ORM\ManyToOne(inversedBy: 'commande')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Bondelivraison $bondelivraison = null;
+
+    /**
+     * @var Collection<int, Contient>
+     */
+    #[ORM\OneToMany(targetEntity: Contient::class, mappedBy: 'commande')]
+    private Collection $contients;
+
+    public function __construct()
+    {
+        $this->contients = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -270,6 +291,60 @@ class Commande
     public function setAdresseFactu(string $adresseFactu): static
     {
         $this->adresseFactu = $adresseFactu;
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $utilisateur): static
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getBondelivraison(): ?Bondelivraison
+    {
+        return $this->bondelivraison;
+    }
+
+    public function setBondelivraison(?Bondelivraison $bondelivraison): static
+    {
+        $this->bondelivraison = $bondelivraison;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contient>
+     */
+    public function getContients(): Collection
+    {
+        return $this->contients;
+    }
+
+    public function addContient(Contient $contient): static
+    {
+        if (!$this->contients->contains($contient)) {
+            $this->contients->add($contient);
+            $contient->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContient(Contient $contient): static
+    {
+        if ($this->contients->removeElement($contient)) {
+            // set the owning side to null (unless already changed)
+            if ($contient->getCommande() === $this) {
+                $contient->setCommande(null);
+            }
+        }
 
         return $this;
     }
