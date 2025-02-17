@@ -31,9 +31,19 @@ class Bondelivraison
     #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'bondelivraison')]
     private Collection $commande;
 
+    /**
+     * @var Collection<int, Quantiter>
+     */
+    #[ORM\OneToMany(targetEntity: Quantiter::class, mappedBy: 'bondelivraison')]
+    private Collection $quantiters;
+
+   
+
     public function __construct()
     {
         $this->commande = new ArrayCollection();
+        $this->quantiters = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -106,4 +116,38 @@ class Bondelivraison
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Quantiter>
+     */
+    public function getQuantiters(): Collection
+    {
+        return $this->quantiters;
+    }
+
+    public function addQuantiter(Quantiter $quantiter): static
+    {
+        if (!$this->quantiters->contains($quantiter)) {
+            $this->quantiters->add($quantiter);
+            $quantiter->setBondelivraison($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantiter(Quantiter $quantiter): static
+    {
+        if ($this->quantiters->removeElement($quantiter)) {
+            // set the owning side to null (unless already changed)
+            if ($quantiter->getBondelivraison() === $this) {
+                $quantiter->setBondelivraison(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
+
+   
 }
