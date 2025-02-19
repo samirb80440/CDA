@@ -33,23 +33,24 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $nomcli = null;
-
-    #[ORM\Column]
-    private ?bool $catecli = null;
-
-    #[ORM\Column]
-    private ?int $coeffcli = null;
-
-    #[ORM\Column(length: 10)]
-    private ?string $numtelephone = null;
 
     /**
      * @var Collection<int, Commande>
      */
     #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'utilisateur')]
     private Collection $commande;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $nomcli = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $catecli = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $coeffcli = null;
+
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $numtelephone = null;
 
     public function __construct()
     {
@@ -131,53 +132,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getNomcli(): ?string
-    {
-        return $this->nomcli;
-    }
+  
 
-    public function setNomcli(string $nomcli): static
-    {
-        $this->nomcli = $nomcli;
+ 
 
-        return $this;
-    }
 
-    public function isCatecli(): ?bool
-    {
-        return $this->catecli;
-    }
-
-    public function setCatecli(bool $catecli): static
-    {
-        $this->catecli = $catecli;
-
-        return $this;
-    }
-
-    public function getCoeffcli(): ?int
-    {
-        return $this->coeffcli;
-    }
-
-    public function setCoeffcli(int $coeffcli): static
-    {
-        $this->coeffcli = $coeffcli;
-
-        return $this;
-    }
-
-    public function getNumtelephone(): ?string
-    {
-        return $this->numtelephone;
-    }
-
-    public function setNumtelephone(string $numtelephone): static
-    {
-        $this->numtelephone = $numtelephone;
-
-        return $this;
-    }
+  
 
     /**
      * @return Collection<int, Commande>
@@ -205,6 +165,54 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
                 $commande->setUtilisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNomcli(): ?string
+    {
+        return $this->nomcli;
+    }
+
+    public function setNomcli(?string $nomcli): static
+    {
+        $this->nomcli = $nomcli;
+
+        return $this;
+    }
+
+    public function isCatecli(): ?bool
+    {
+        return $this->catecli;
+    }
+
+    public function setCatecli(?bool $catecli): static
+    {
+        $this->catecli = $catecli;
+
+        return $this;
+    }
+
+    public function getCoeffcli(): ?int
+    {
+        return $this->coeffcli;
+    }
+
+    public function setCoeffcli(?int $coeffcli): static
+    {
+        $this->coeffcli = $coeffcli;
+
+        return $this;
+    }
+
+    public function getNumtelephone(): ?string
+    {
+        return $this->numtelephone;
+    }
+
+    public function setNumtelephone(?string $numtelephone): static
+    {
+        $this->numtelephone = $numtelephone;
 
         return $this;
     }
