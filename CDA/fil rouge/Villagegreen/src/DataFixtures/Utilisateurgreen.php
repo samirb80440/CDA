@@ -6,8 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Utilisateur;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-
-class VillagegreenutiFixtures extends Fixture
+class Utilisateurgreen extends Fixture
 {
     private $passwordHasher;
 
