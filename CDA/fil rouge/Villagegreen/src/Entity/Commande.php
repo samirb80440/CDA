@@ -67,12 +67,13 @@ class Commande
     #[ORM\Column(length: 150)]
     private ?string $adresseFactu = null;
 
-    #[ORM\ManyToOne(inversedBy: 'commande')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'commandes')]
+    #[ORM\JoinColumn(name: 'Id_utili', referencedColumnName: 'id', nullable: false)]
+
     private ?Utilisateur $utilisateur = null;
 
-    #[ORM\ManyToOne(inversedBy: 'commande')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Bondelivraison::class, inversedBy: 'commande')]
+    #[ORM\JoinColumn(name: 'Id_Bon_de_livraison', referencedColumnName: 'id')]
     private ?Bondelivraison $bondelivraison = null;
 
     /**
