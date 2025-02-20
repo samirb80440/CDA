@@ -47,18 +47,9 @@ class Produit
     #[ORM\OneToMany(targetEntity: Contient::class, mappedBy: 'produit')]
     private Collection $contients;
 
-    /**
-     * @var Collection<int, Quantiter>
-     */
-    #[ORM\OneToMany(targetEntity: Quantiter::class, mappedBy: 'produit')]
-    private Collection $quantiters;
-
-
     public function __construct()
     {
         $this->contients = new ArrayCollection();
-        $this->quantiters = new ArrayCollection();
-        
     }
 
     public function getId(): ?int
@@ -191,36 +182,4 @@ class Produit
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, Quantiter>
-     */
-    public function getQuantiters(): Collection
-    {
-        return $this->quantiters;
-    }
-
-    public function addQuantiter(Quantiter $quantiter): static
-    {
-        if (!$this->quantiters->contains($quantiter)) {
-            $this->quantiters->add($quantiter);
-            $quantiter->setProduit($this);
-        }
-
-        return $this;
-    }
-
-    public function removeQuantiter(Quantiter $quantiter): static
-    {
-        if ($this->quantiters->removeElement($quantiter)) {
-            // set the owning side to null (unless already changed)
-            if ($quantiter->getProduit() === $this) {
-                $quantiter->setProduit(null);
-            }
-        }
-
-        return $this;
-    }
-
-   
 }
