@@ -52,6 +52,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $numtelephone = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $prenomcli = null;
+
     public function __construct()
     {
         $this->commande = new ArrayCollection();
@@ -213,6 +216,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setNumtelephone(?string $numtelephone): static
     {
         $this->numtelephone = $numtelephone;
+
+        return $this;
+    }
+
+    public function getPrenomcli(): ?string
+    {
+        return $this->prenomcli;
+    }
+
+    public function setPrenomcli(string $prenomcli): static
+    {
+        $this->prenomcli = $prenomcli;
 
         return $this;
     }
