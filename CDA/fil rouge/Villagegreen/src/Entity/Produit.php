@@ -38,7 +38,7 @@ class Produit
     private ?Categorie $categorie = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Fournisseur $fournisseur = null;
 
     /**

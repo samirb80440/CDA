@@ -21,18 +21,15 @@ class SousCategorie
     #[ORM\Column(length: 50)]
     private ?string $nomSousCategorie = null;
 
+    #[ORM\ManyToOne(inversedBy: 'sousCategories')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
     /**
      * @var Collection<int, Categorie>
      */
-    #[ORM\OneToMany(targetEntity: Categorie::class, mappedBy: 'souscategorie')]
-    private Collection $categories;
-
-    public function __construct()
-    {
-        $this->categories = new ArrayCollection();
-    }
-
-
+   
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -65,34 +62,24 @@ class SousCategorie
     /**
      * @return Collection<int, Categorie>
      */
-    public function getCategories(): Collection
+
+    public function getCategorie(): ?Categorie
     {
-        return $this->categories;
+        return $this->categorie;
     }
 
-    public function addCategory(Categorie $category): static
+    public function setCategorie(?Categorie $categorie): static
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-            $category->setSouscategorie($this);
-        }
+        $this->categorie = $categorie;
 
         return $this;
     }
+   
 
-    public function removeCategory(Categorie $category): static
-    {
-        if ($this->categories->removeElement($category)) {
-            // set the owning side to null (unless already changed)
-            if ($category->getSouscategorie() === $this) {
-                $category->setSouscategorie(null);
-            }
-        }
-
-        return $this;
+    
     }
 
    
 
         
-}
+
