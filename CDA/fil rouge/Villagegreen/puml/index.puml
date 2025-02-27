@@ -1,0 +1,116 @@
+@startuml
+class SousCategorie {
+	**id : int**
+	imageSousCategorie : string
+	nomSousCategorie : string
+	<color:#0000dd>categorie : Categorie</color>
+}
+
+class Commande {
+	**id : int**
+	prixAchatCom : float
+	prixVenteCom : float
+	conditionReg : bool
+	dateFact : DateTimeInterface
+	numFact : string
+	reduction : float
+	comExp : bool
+	numCom : string
+	nomCom : string
+	dateCom : DateTimeInterface
+	totalTtc : int
+	tauxTva : float
+	adresseLivrai : string
+	prixHtva : int
+	indicReduc : bool
+	totalHtva : int
+	adresseFactu : string
+	<color:#0000dd>utilisateur : Utilisateur</color>
+	<color:#0000dd>bondelivraison : Bondelivraison</color>
+	<color:#0000dd>contients : Contient[]</color>
+}
+
+class Quantiter {
+	**id : int**
+	quantite : int
+	<color:#0000dd>bondelivraison : Bondelivraison</color>
+	<color:#0000dd>produit : Produit</color>
+}
+
+class Categorie {
+	**id : int**
+	nomCategorie : string
+	imageCategorie : string
+	<color:#0000dd>produits : Produit[]</color>
+	<color:#0000dd>sousCategories : SousCategorie[]</color>
+}
+
+class Utilisateur {
+	**id : int**
+	email : string
+	roles : array
+	password : string
+	<color:#0000dd>commande : Commande[]</color>
+	nomcli : string
+	catecli : bool
+	coeffcli : int
+	numtelephone : string
+	prenomcli : string
+}
+
+class Produit {
+	**id : int**
+	prixAchat : int
+	nomProd : string
+	stockprod : int
+	photoProduit : string
+	LibCourtProd : string
+	libLongProd : string
+	<color:#0000dd>categorie : Categorie</color>
+	<color:#0000dd>fournisseur : Fournisseur</color>
+	<color:#0000dd>contients : Contient[]</color>
+	<color:#0000dd>quantiters : Quantiter[]</color>
+}
+
+class Bondelivraison {
+	**id : int**
+	numLivrais : string
+	logoEntreprise : string
+	dateLivCom : DateTimeInterface
+	<color:#0000dd>commande : Commande[]</color>
+	<color:#0000dd>quantiters : Quantiter[]</color>
+}
+
+class Fournisseur {
+	**id : int**
+	nomFournisseur : string
+	contactFournisseur : string
+	adresseFournisseur : string
+	telephoneFournisseur : string
+	<color:#0000dd>produits : Produit[]</color>
+}
+
+class Contient {
+	**id : int**
+	quantite : int
+	<color:#0000dd>commande : Commande</color>
+	<color:#0000dd>produit : Produit</color>
+}
+
+SousCategorie "*"--"1" Categorie
+Commande "*"--"1" Utilisateur
+Commande "*"--"1" Bondelivraison
+Commande "1"--"*" Contient
+Quantiter "*"--"1" Bondelivraison
+Quantiter "*"--"1" Produit
+Categorie "1"--"*" Produit
+Utilisateur "1"--"*" Commande
+Produit "*"--"1" Fournisseur
+Produit "1"--"*" Contient
+
+
+hide methods
+
+hide circle
+
+@enduml
