@@ -1,0 +1,9 @@
+
+mysqldump --user=samir --password=Mithra79 Villagegreen > backup_Villagegreen.sql
+
+créer un sauvegarde de la base de donnée Villagegreen
+
+
+cat backup_hotel.sql | mysql --user=samir --password=Mithra79 new_Villagegreen
+
+créer un backup de Villag
