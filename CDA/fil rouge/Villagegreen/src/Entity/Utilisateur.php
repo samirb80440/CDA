@@ -55,9 +55,16 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $prenomcli = null;
 
+    /**
+     * @var Collection<int, Contact>
+     */
+    #[ORM\OneToMany(targetEntity: Contact::class, mappedBy: 'utilisateur')]
+    private Collection $contacts;
+
     public function __construct()
     {
         $this->commande = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -228,6 +235,36 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenomcli(string $prenomcli): static
     {
         $this->prenomcli = $prenomcli;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contact>
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): static
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts->add($contact);
+            $contact->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): static
+    {
+        if ($this->contacts->removeElement($contact)) {
+            // set the owning side to null (unless already changed)
+            if ($contact->getUtilisateur() === $this) {
+                $contact->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }
