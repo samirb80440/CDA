@@ -6,7 +6,7 @@ use App\Entity\Fournisseur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class Fournisseurgreen extends Fixture
+class Jeu2villagreen extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
@@ -32,4 +32,3 @@ class Fournisseurgreen extends Fixture
         
     }
 }
-

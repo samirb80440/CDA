@@ -68,12 +68,9 @@ class Commande
     private ?string $adresseFactu = null;
 
     #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'commandes')]
-    #[ORM\JoinColumn(name: 'Id_utili', referencedColumnName: 'id', nullable: false)]
-
     private ?Utilisateur $utilisateur = null;
 
     #[ORM\ManyToOne(targetEntity: Bondelivraison::class, inversedBy: 'commande')]
-    #[ORM\JoinColumn(name: 'Id_Bon_de_livraison', referencedColumnName: 'id')]
     private ?Bondelivraison $bondelivraison = null;
 
     /**

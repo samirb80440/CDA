@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\BondeLivraison;
+use App\Entity\Bondelivraison;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

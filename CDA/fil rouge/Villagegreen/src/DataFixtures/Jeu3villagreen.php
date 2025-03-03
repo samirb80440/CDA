@@ -1,4 +1,5 @@
 <?php
+
 namespace App\DataFixtures;
 
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -9,7 +10,7 @@ use App\Entity\SousCategorie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class Produitgreen extends Fixture 
+class Jeu3villagreen extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
@@ -68,7 +69,7 @@ class Produitgreen extends Fixture
         $produitsData = [
             [15.50, 'Guitare Electrique', 50, 'guitare_electrique.jpg', 'Guitare Electrique', 'Une guitare électrique', 'Guitares', 1],
             [25.00, 'Piano a queue', 200, 'piano_numerique.jpg', 'Produit B', 'Description détaillée du produit', 'Piano', 2],
-            [12.75, 'Batterie electrique', 150, 'photoC.jpg', 'Produit C', 'Description détaillée du produit C', 'Batterie', 3],
+            [12.75, 'Batterie electronique', 150, 'batterie_electroniques.webp', 'Produit C', 'Description détaillée du produit C', 'Batterie', 3],
             [18.00, 'Violoncelle', 20, 'violoncelle.jpg', 'Violoncelle', 'Violoncelle professionnel avec un son riche.', 'Violon', 4]
         ];
     
@@ -106,4 +107,4 @@ class Produitgreen extends Fixture
         }
         $manager->flush();
     }
-}    
+}

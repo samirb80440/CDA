@@ -17,11 +17,11 @@ class Contient
     private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'contients')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: "Id_Commande", referencedColumnName: "id")]
     private ?Commande $commande = null;
 
     #[ORM\ManyToOne(inversedBy: 'contients')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: "Id_Produit", referencedColumnName: "id")]
     private ?Produit $produit = null;
 
     public function getId(): ?int

@@ -7,7 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Utilisateur;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class Utilisateurgreen extends Fixture
+class Jeu1villagreen extends Fixture
 {
     private $passwordHasher;
 
@@ -19,14 +19,14 @@ class Utilisateurgreen extends Fixture
     public function load(ObjectManager $manager): void
     {
         $utilisateursData = [
-            ['U1', 'Alice','Dupont','alice.dupont@gmail.com', true, 1, '0612345678', 'password123','ROLE_ADMIN'],
-            ['U2', 'Jean','Martin','jean.martin@yagoo.com',false, 2, '0623456789', 'password456','ROLE_USER'],
-            ['U3', 'Claire','Leroy','claire.leroy@fake.com',true, 1, '0634567890', 'password789','ROLE_USER'],
-            ['U4', 'Paul','Durand','paul.durand@random.com',false, 2, '0645678901', 'password012','ROLE_USER'],
-            ['U5', 'Sophie','Lambert','sophie.lambert@outlook.com',true, 1, '0656789012', 'password345','ROLE_USER']
+            ['Alice','Dupont','alice.dupont@gmail.com', true, 1, '0612345678', 'password123','ROLE_ADMIN',1],
+            ['Jean','Martin','jean.martin@yagoo.com',false, 2, '0623456789', 'password456','ROLE_USER',2],
+            ['Claire','Leroy','claire.leroy@fake.com',true, 1, '0634567890', 'password789','ROLE_USER',3],
+            ['Paul','Durand','paul.durand@random.com',false, 2, '0645678901', 'password012','ROLE_USER',4],
+            ['Sophie','Lambert','sophie.lambert@outlook.com',true, 1, '0656789012', 'password345','ROLE_USER',5]
         ];
 
-        foreach ($utilisateursData as [$id, $nom, $prenom, $email, $cate, $coeff, $tel, $mdp, $role]) {
+        foreach ($utilisateursData as [$nom, $prenom, $email, $cate, $coeff, $tel, $mdp, $role]) {
             $user = new Utilisateur();
             $user->setNomCli($nom)
                  ->setPrenomcli($prenom)
