@@ -84,15 +84,13 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "scripts": {
-        "fixtures":
-        [
+        "fixtures": [
             "symfony console d:d:d --force --if-exists",
             "symfony console d:d:c",
             "symfony console d:s:u --force",
-            "symfony console d:f:l --no-interaction --append"
-        
-    ]
+            "symfony console d:f:l --no-interaction --append",
+            "symfony console make:puml"
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -114,5 +112,4 @@
         "symfony/stopwatch": "6.4.*",
         "symfony/web-profiler-bundle": "6.4.*"
     }
-}
 }
