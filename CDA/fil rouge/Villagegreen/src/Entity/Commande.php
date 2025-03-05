@@ -50,7 +50,7 @@ class Commande
     private ?int $totalTtc = null;
 
     #[ORM\Column]
-    private ?float $tauxTva = null;
+    private ?int $tauxTva = null;
 
     #[ORM\Column(length: 150)]
     private ?string $adresseLivrai = null;
@@ -59,7 +59,7 @@ class Commande
     private ?int $prixHtva = null;
 
     #[ORM\Column]
-    private ?bool $indicReduc = null;
+    private ?int $indicReduc = null;
 
     #[ORM\Column]
     private ?int $totalHtva = null;

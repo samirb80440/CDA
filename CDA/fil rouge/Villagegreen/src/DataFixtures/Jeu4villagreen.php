@@ -24,10 +24,10 @@ class Jeu4villagreen extends Fixture
          
 
         $commandeData = [
-            [150.00, 200.00, TRUE, new \DateTime('2025-01-01'), 'F001', 10.00, TRUE, 'COM001', 'Guitare acoustique Yamaha', new \DateTime('2025-02-16'), 220, 20.00, 'Paris', 180, TRUE, 180, 'Paris',1,1],
-            [300.00, 400.00, FALSE,new \DateTime('2025-01-02'), 'F002', 5.00, FALSE, 'COM002', 'Batterie Pearl Export', new \DateTime('2025-01-15'), 420, 20.00, 'Lyon', 350, FALSE, 350, 'Lyon',2,2],
-            [500.00, 600.00, TRUE, new \DateTime('2025-01-03'), 'F003', 15.00, TRUE, 'COM003', 'Piano numérique Roland', new \DateTime('2025-09-27'), 690, 20.00, 'Marseille', 580, TRUE, 580, 'Marseille',3,3],
-            [100.00, 120.00, TRUE, new \DateTime('2025-01-04'), 'F004', 0.00, FALSE, 'COM004', 'Flûte traversière Yamaha', new \DateTime('2025-12-04'), 144, 20.00, 'Paris', 120, TRUE, 120, 'Paris',4,4]
+            [150.00, 200.00, TRUE, new \DateTime('2025-01-01'), 'F001', 10.00, 0, 'COM001', 'Guitare acoustique Yamaha', new \DateTime('2025-02-16'), 220, 20.00, 'Paris', 180, 0, 180, 'Paris',1,1],
+            [300.00, 400.00, FALSE,new \DateTime('2025-01-02'), 'F002', 5.00, 1, 'COM002', 'Batterie Pearl Export', new \DateTime('2025-01-15'), 420, 20.00, 'Lyon', 350, 30, 350, 'Lyon',2,2],
+            [500.00, 600.00, TRUE, new \DateTime('2025-01-03'), 'F003', 15.00, 1, 'COM003', 'Piano numérique Roland', new \DateTime('2025-09-27'), 690, 20.00, 'Marseille', 580, 0, 580, 'Marseille',3,3],
+            [100.00, 120.00, TRUE, new \DateTime('2025-01-04'), 'F004', 0.00, 0, 'COM004', 'Flûte traversière Yamaha', new \DateTime('2025-12-04'), 144, 20.00, 'Paris', 120, 15, 120, 'Paris',4,4]
         ];
 
 
