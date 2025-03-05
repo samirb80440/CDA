@@ -14,27 +14,5 @@ body {
 }
 
 
-.footer-icons{
-    display: flex;
-    justify-content: center; /* Centre les icônes horizontalement */
- 
 
-}
-
-
-
-
-.footer-icon{
-    width: 30px;  /* Taille par défaut */
-    height: auto;
-}
-
-
-
-
-@media (max-width: 576px) {
-    .footer-icon {
-        width: 25px;
-    }
-}
 

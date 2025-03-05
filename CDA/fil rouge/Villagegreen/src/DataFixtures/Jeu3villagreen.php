@@ -37,10 +37,6 @@ class Jeu3villagreen extends Fixture
     
         // 🔹 Liste des sous-catégories avec association aux catégories
         $sousCategoriesData = [
-            ['Trombones.webp', 'Trombone', 'Intrument_a_vent'],
-            ['syntétiseur.webp', 'Syntetiseur', 'Piano'],
-            ['Saxophones.webp', 'Saxophones', 'Intrument_a_vent'],
-            ['Piano_a_queue.webp', 'Piano_a_queue', 'Piano'],
             ['Intrument_folklore.webp', 'Intrument_folklore', 'Violon'],
             ['guitare_electrique.webp', 'Guitare_electrique', 'Guitares'],
             ['guitare_acoustique.webp', 'Guitare_acoustique', 'Guitares'],
@@ -67,10 +63,10 @@ class Jeu3villagreen extends Fixture
     
         // 🔹 Liste des produits avec association aux catégories et fournisseurs
         $produitsData = [
-            [15.50, 'Guitare Electrique', 50, 'guitare_electrique.jpg', 'Guitare Electrique', 'Une guitare électrique', 'Guitares', 1],
-            [25.00, 'Piano a queue', 200, 'piano_numerique.jpg', 'Produit B', 'Description détaillée du produit', 'Piano', 2],
-            [12.75, 'Batterie electronique', 150, 'batterie_electroniques.webp', 'Produit C', 'Description détaillée du produit C', 'Batterie', 3],
-            [18.00, 'Violoncelle', 20, 'violoncelle.jpg', 'Violoncelle', 'Violoncelle professionnel avec un son riche.', 'Violon', 4]
+            [15.50, 'Guitare Electrique', 50, 'Gibson_SG_Standard_64_Maestro_CH_ULA.jpg', 'Guitare Electrique', 'Une guitare électrique', 'Guitares', 1],
+            [25.00, 'Piano a queue', 200, 'Kawai_GL_10_Grand_Piano.jpg', 'Produit B', 'Description détaillée du produit', 'Piano', 2],
+            [12.75, 'Batterie electronique', 150, "Millenium_MPS-850_E-Drum_Set.jpg", 'Produit C', 'Description détaillée du produit C', 'Batterie', 3],
+            [18.00, 'Violoncelle', 20, 'Scala_Vilagio_L.V._Montagnana_Cello.jpg', 'Violoncelle', 'Violoncelle professionnel avec un son riche.', 'Violon', 4]
         ];
     
         foreach ($produitsData as [$prix, $nom, $stock, $image, $libelleCourt, $libelleLong, $nomCategorie, $idFournisseur]) {

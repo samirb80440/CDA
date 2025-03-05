@@ -3,18 +3,39 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div>
+		<div class="fs-1 ms-md-5">Les Catégories :</div>
+		<div class="container my-5">
+			<div class="row justify-content-center">
+				{% for categorie in categories %}
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+						<div class="card" style="width: 10rem;">
+							<img src="{{ asset('Image/categorie/' ~ categorie.imageCategorie) }}" class="card-img-top" alt="{{ categorie.nomCategorie }}">
+							<div class="card-body">
+								<h5 class="card-title">{{ categorie.nomCategorie }}</h5>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="fs-1 ms-md-5">Les Intruments :</div>
+		<div class="container my-5">
+			<div class="row justify-content-center">
+				{% for produit in produits %}
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+						<div class="card" style="width: 10rem;">
+							<img src="{{ asset('Image/article/' ~ produit.photoProduit) }}" class="card-img-top" alt="{{ produit.nomProd }}">
+							<div class="card-body">
+								<h5 class="card-title">{{ produit.nomProd}}</h5>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/samir/DEV/CDA/fil rouge/Villagegreen/src/Controller/CatalogueController.php</code></li>
-        <li>Your template at <code>/home/samir/DEV/CDA/fil rouge/Villagegreen/templates/catalogue/index.html.twig</code></li>
-    </ul>
-</div>
 {% endblock %}

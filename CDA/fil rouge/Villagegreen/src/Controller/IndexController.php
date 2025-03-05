@@ -27,7 +27,7 @@ class IndexController extends AbstractController
     public function index(): Response
     {
         $categories = $this->categorieRepo->findAll();
-        $produits = $this->produitRepo->findAll();
+        $produits = $this->produitRepo->findBy([], null, 3);
 
         return $this->render('catalogue/index.html.twig', [
             'controller_name' => 'CatalogueController',
