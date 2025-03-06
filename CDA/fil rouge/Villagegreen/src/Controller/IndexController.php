@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
 use App\Repository\ProduitRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\SousCategorieRepository;
@@ -51,8 +52,10 @@ class IndexController extends AbstractController
     public function SelectSousCategorie(int $id): Response
     {
             $categories = $this->categorieRepo->find($id);
-            $sous_categories = $this->sousCategorieRepo->findBy(['Categorie' => $categories]);
+           
 
+
+            $sous_categories = $categories->getSousCategories();
 
             return $this->render('catalogue/sousCategories.html.twig',[
                 'sous_categories' => $sous_categories,
@@ -79,7 +82,10 @@ class IndexController extends AbstractController
     #[Route('/produits-{id}', name:'app_selectproduit', requirements: ['id' => '\d+'])]
     public function SelectProduit(int $id ): Response
     {
-        $produits = $this->produitRepo->find($id);
+
+
+        $souscategories = $this->sousCategorieRepo->find($id);
+        $produits = $souscategories->getProduits();
        
 
         return $this->render('catalogue/produits.html.twig', [
@@ -89,14 +95,13 @@ class IndexController extends AbstractController
     
     }
 
-    #[Route('/produits-{id}', name:'app_detailproduit', requirements: ['id' => '\d+'])]
-    public function DetailProduit(int $id ): Response
+    #[Route('/produits/{id}', name:'app_detailproduit', requirements: ['id' => '\d+'])]
+    public function DetailProduit(Produit $produit ): Response
     {
-        $produits = $this->produitRepo->find($id);
-       
+        
 
         return $this->render('catalogue/detailproduits.html.twig', [
-            'produits' => $produits,
+            'produit' => $produit
         
     ]);
 

@@ -10,11 +10,13 @@
 				{% for categorie in categories %}
 					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
 						<div class="card" style="width: 10rem;">
+						<a href="{{ path('app_selectSousCategorie', {id: categorie.id }) }}">
 							<img src="{{ asset('Image/categorie/' ~ categorie.imageCategorie) }}" class="card-img-top" alt="{{ categorie.nomCategorie }}">
 							<div class="card-body">
-								<h5 class="card-title">{{ categorie.nomCategorie }}</h5>
+							<h5 class="card-title">{{ categorie.nomCategorie}}</h5>
 							</div>
 						</div>
+						</a>
 					</div>
 				{% endfor %}
 			</div>
@@ -26,12 +28,14 @@
 			<div class="row justify-content-center">
 				{% for produit in produits %}
 					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+					<a href="{{ path('app_selectproduit',{id:produit.id}) }}">
 						<div class="card" style="width: 10rem;">
 							<img src="{{ asset('Image/article/' ~ produit.photoProduit) }}" class="card-img-top" alt="{{ produit.nomProd }}">
 							<div class="card-body">
 								<h5 class="card-title">{{ produit.nomProd}}</h5>
 							</div>
 						</div>
+						</a>
 					</div>
 				{% endfor %}
 			</div>

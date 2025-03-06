@@ -53,6 +53,9 @@ class Produit
     #[ORM\OneToMany(targetEntity: Quantiter::class, mappedBy: 'produit')]
     private Collection $quantiters;
 
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    private ?SousCategorie $souscategorie = null;
+
 
     public function __construct()
     {
@@ -218,6 +221,18 @@ class Produit
                 $quantiter->setProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSouscategorie(): ?SousCategorie
+    {
+        return $this->souscategorie;
+    }
+
+    public function setSouscategorie(?SousCategorie $souscategorie): static
+    {
+        $this->souscategorie = $souscategorie;
 
         return $this;
     }
