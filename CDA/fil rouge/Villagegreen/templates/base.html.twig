@@ -29,7 +29,7 @@
 				<div class="collapse navbar-collapse llapse justify-content-center " id="navbarSupportedContent">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ path('app_index') }}">Accueil</a>
+							<a class="nav-link  {{ app.current_route == 'app_index' ? 'active' : '' }}" aria-current="page" href="{{ path('app_index') }}">Accueil</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,11 +37,11 @@
 							</a>
 							<ul class="dropdown-menu">
 							<li>
-									<a class="dropdown-item" href="{{ path('app_produits') }}">Intruments</a>
+									<a class="dropdown-item  {{app.current_route == 'app_produits' ? 'active' : ''}}" href="{{ path('app_produits') }}">Intruments</a>
 								</li>
 								<li><hr class="dropdown-divider"></li>
 								<li>
-									<a class="dropdown-item" href="{{ path('app_sousCategorie') }}">Sous-categories</a>
+									<a class="dropdown-item {{app.current_route == 'app_sousCategorie' ? 'active' : ''}}" href="{{ path('app_sousCategorie') }}">Sous-categories</a>
 								</li>
 							</ul>
 						</li>
@@ -52,8 +52,13 @@
 							<a class="nav-link" href="{{ path('app_contact') }}">Contact</a>
 						</li>
 						<li class="nav-item ">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="{{ path('app_logout')}}">
 							<i class="fa-solid fa-address-card"></i>
+							</a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link" href="{{ path('app_login')}}">
+							<i class="fa-solid fa-user"></i>
 							</a>
 						</li>
 						<li class="nav-item ">
