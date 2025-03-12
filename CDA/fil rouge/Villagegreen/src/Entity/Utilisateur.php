@@ -44,7 +44,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $nomcli = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $catecli = null;
+    private ?int $catecli = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $coeffcli = null;

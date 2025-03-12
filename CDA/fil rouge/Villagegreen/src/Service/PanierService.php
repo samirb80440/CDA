@@ -38,7 +38,7 @@ class PanierService
     {
         $session=$this->requestStack->getSession();
 
-        return $session->get('panier,[]');
+        return $session->get('panier',[]);
     }
 
     
@@ -52,8 +52,8 @@ class PanierService
         foreach ($panier as $id => $quantite) {
             $produit = $this->produitrepo->find($id);
             $dataPanier[] = [
-                'Produit' => $produit,
-                'Quantite' => $quantite,
+                'produit' => $produit,
+                'quantite' => $quantite,
                 ];
                 }
                 return $dataPanier;
@@ -66,17 +66,18 @@ class PanierService
         $panier = $this->ShowPanier();
         $total = 0;
         $user = $this->getUser();
-
-        foreach ($panier as $id => $quantite) {
-            $produit = $this->produitrepo->find($id);
-            if ($user != null){
-                $coefficientvente = (float) ('0' . $user->getCoeffcli());
-            } else {
-                $coefficientvente =0.20;
-            }
-            $prixProduit = round($produit->getPrixAchat()+$coefficientvente * $produit->getPrixAchat(), 2);
-            $total += round($prixProduit * $quantite, 2);
+       
+    foreach ($panier as $id => $quantite) {
+        $produit = $this->produitrepo->find($id);
+        if ($user != null && $user->getCoeffcli() !== null){
+            $coefficientvente = $user->getCoeffcli() / 100; // Convertit en % correctement
+        } else {
+            $coefficientvente = 0.20; // Coefficient par défaut
         }
+        
+        $prixProduit = round($produit->getPrixAchat() * (1 + $coefficientvente), 2);
+        $total += round($prixProduit * $quantite, 2);
+    }
     
         return $total;
 

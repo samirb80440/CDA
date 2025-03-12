@@ -19,11 +19,11 @@ class Jeu1villagreen extends Fixture
     public function load(ObjectManager $manager): void
     {
         $utilisateursData = [
-            ['Alice','Dupont','alice.dupont@gmail.com', true, 1, '0612345678', 'password123','ROLE_ADMIN',1],
-            ['Jean','Martin','jean.martin@yagoo.com',false, 2, '0623456789', 'password456','ROLE_USER',2],
-            ['Claire','Leroy','claire.leroy@fake.com',true, 1, '0634567890', 'password789','ROLE_USER',3],
-            ['Paul','Durand','paul.durand@random.com',false, 2, '0645678901', 'password012','ROLE_USER',4],
-            ['Sophie','Lambert','sophie.lambert@outlook.com',true, 1, '0656789012', 'password345','ROLE_USER',5]
+            ['Alice','Dupont','alice.dupont@gmail.com', true, 50, '0612345678', 'password123','ROLE_ADMIN',1],
+            ['Jean','Martin','jean.martin@yagoo.com',false, 70, '0623456789', 'password456','ROLE_USER',2],
+            ['Claire','Leroy','claire.leroy@fake.com',true, 50, '0634567890', 'password789','ROLE_USER',3],
+            ['Paul','Durand','paul.durand@random.com',false, 70, '0645678901', 'password012','ROLE_USER',4],
+            ['Sophie','Lambert','sophie.lambert@outlook.com',true, 50, '0656789012', 'password345','ROLE_USER',5]
         ];
 
         foreach ($utilisateursData as [$nom, $prenom, $email, $cate, $coeff, $tel, $mdp, $role]) {

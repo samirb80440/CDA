@@ -1,20 +1,163 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
+{% block title %}Hello PanierController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="container-fluid">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<section class="bg-ligth p-3">
+			<h1 class="couleur">
+				Votre Panier
+			</h1>
+		</section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/src/Controller/PanierController.php</code></li>
-        <li>Your template at <code>/var/www/templates/panier/index.html.twig</code></li>
-    </ul>
+		<div class="row">
+
+			<div class="col-9">
+
+				<table class="table table-hover">
+
+					<thead>
+
+						<tr>
+							<th class="text-center"></th>
+							<th class="text-center">Produit</th>
+							<th class="text-center">Prix</th>
+							<th class="text-center">Quantité</th>
+							<th class="text-center">Total</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+						{% for element in dataPanier %}
+
+							{% if app.user %}
+
+								{% set coefficient = (app.user.Coeffcli / 100) %}
+
+
+							{% else %}
+
+								{% set coefficient = 0.20 %}
+
+							{% endif %}
+
+							{% set prixVente = (element.produit.prixAchat * (1 + coefficient)) | number_format(2, '.', ' ') %}
+                           
+							<tr>
+								<td class="text-center align-middle"><img src="{{ asset ('Image/article/' ~ element.produit.photoProduit) }}" alt="{{ element.produit.LibCourtProd}}-food" class="imageplat img-fluid"></td>
+								<td class="text-center align-middle">{{ element.produit.nomProd }}</td>
+								<td class="text-center align-middle">{{ prixVente | number_format(2,'.','')}}€</td>
+								<td class="text-center align-middle">{{ element.quantite }}</td>
+								<td class="text-center align-middle">{{ (prixVente * element.quantite) | number_format(2 , '.', ' ') }}€</td>
+                                <td class="text-center align-middle">
+
+								<a href="{{ path ("app_ajout_panier" , {id: element.produit.id}) }}" class="btn btn-success">
+									<i class="bi bi-cart-plus"></i>
+								</a>
+
+								<a href="{{ path ("app_enlever_panier" , {id: element.produit.id}) }}" class="btn btn-warning mx-3">
+									<i class="bi bi-cart-dash"></i>
+								</a>
+
+								<a href="{{ path ("app_supprimer_panier" , {id: element.produit.id}) }}" class="btn btn-danger">
+									<i class="bi bi-cart-x"></i>
+								</a>
+						       </td>
+							</tr>
+					</tbody>
+				</tr>
+
+			{% else %}
+
+				<tr>
+					<td colspan="6" class="text-center">Votre Panier est vide</td>
+				</tr>
+
+			{% endfor %}
+
+		</tbody>
+
+		<tfoot class="d-md-none">
+			<tr>
+				<td colspan="3">Total :</td>
+				<td class="text-md-end">{{ total | number_format(2 , '.',' ') }}
+					€</td>
+				<td colspan="2">
+					<a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover justify-content-center" href="">
+						<button class="btn btn-primary">Commander</button>
+					</a>
+				</td>
+			</tr>
+		</tfoot>
+
+	</table>
+
 </div>
-{% endblock %}
+
+<div class="col-2 d-md-block d-none p-0">
+	<table class="bg-light col-1 table">
+		<thead>
+			<tr>
+				<th class="text-start" scope="col">Total :</th>
+				<th></th>
+				<th class="text-end">
+					<a href="{{ path ("app_supprimer_panier_all") }}" class="btn btn-danger">
+						<i class="bi bi-cart-x"></i>
+					</a>
+				</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			{% for element in dataPanier %}
+
+				{% if app.user %}
+
+					{% set coefficient = (app.user.Coeffcli / 100) %}
+
+
+				{% else %}
+
+					{% set coefficient = 0.20 %}
+
+				{% endif %}
+				{% set prixVente = (element.produit.prixAchat * (1 + coefficient)) | number_format(2, '.', ' ') %}
+
+
+				<tr>
+					<td class="text-center align-middle">{{prixVente | number_format(2,'.','') }}
+						€</td>
+					<td class="text-center align-middle">
+						x
+					</td>
+					<td class="text-center align-middle">{{ element.quantite }}</td>
+				</tr>
+			{% else %}
+
+				<tr>
+					<td colspan="5" class="text-center">Votre Panier est vide</td>
+				</tr>
+
+			{% endfor %}
+			<tr>
+				<td colspan="3" class="text-center">Sous-total ({{ dataPanier | length}}
+					article
+					{% if dataPanier | length > 1 %}s
+					{% endif %}) :
+					{{ total | number_format(2 , '.',' ')}}
+					€</td>
+			</tr>
+
+			<tr>
+				<td colspan="3" class="text-end">
+					<a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover justify-content-center" href="">
+						<button class="btn btn-primary">Commander</button>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div></div></div>{% endblock %}

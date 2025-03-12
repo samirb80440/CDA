@@ -73,6 +73,13 @@
         "symfony/polyfill-php81": "*"
     },
     "scripts": {
+        "fixtures": [
+            "symfony console d:d:d --force --if-exists",
+            "symfony console d:d:c",
+            "symfony console d:s:u --force",
+            "symfony console d:f:l --no-interaction --append",
+            "symfony console make:puml"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
@@ -83,14 +90,8 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ],
-        "fixtures": [
-            "symfony console d:d:d --force --if-exists",
-            "symfony console d:d:c",
-            "symfony console d:s:u --force",
-            "symfony console d:f:l --no-interaction --append",
-            "symfony console make:puml"
         ]
+
     },
     "conflict": {
         "symfony/symfony": "*"
