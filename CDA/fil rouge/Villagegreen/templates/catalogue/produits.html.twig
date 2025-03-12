@@ -8,16 +8,16 @@
 		<div class="container my-5">
 			<div class="row justify-content-center">
 				{% for produit in produits %}
-               <a href="{{ path('app_detailproduit', {id: produit.id }) }}">
 					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
 						<div class="card" style="width: 10rem;">
 							<img src="{{ asset('Image/article/' ~ produit.photoProduit) }}" class="card-img-top" alt="{{ produit.nomProd}}">
 							<div class="card-body">
+							<a href="{{ path('app_detailproduit', {id: produit.id }) }}"
 								<h5 class="card-title">{{ produit.nomProd }}</h5>
 							</div>
 						</div>
-					</div>
                     </a>
+					</div>
 				{% endfor %}
 			</div>
 		</div>
