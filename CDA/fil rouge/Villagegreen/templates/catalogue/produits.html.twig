@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Instrument{% endblock %}
 
 {% block body %}
 <div>
@@ -10,9 +10,9 @@
 				{% for produit in produits %}
 					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
 						<div class="card" style="width: 10rem;">
+						<a href="{{ path('app_detailproduit', {id: produit.id }) }}">
 							<img src="{{ asset('Image/article/' ~ produit.photoProduit) }}" class="card-img-top" alt="{{ produit.nomProd}}">
 							<div class="card-body">
-							<a href="{{ path('app_detailproduit', {id: produit.id }) }}"
 								<h5 class="card-title">{{ produit.nomProd }}</h5>
 							</div>
 						</div>
