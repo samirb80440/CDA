@@ -17,10 +17,10 @@ class Jeu3villagreen extends Fixture
         
         // 🔹 Liste des catégories
         $categoriesData = [
-            'Guitares' => 'Guitare.webp',
-            'Violon' => 'Violon.webp',
-            'Piano' => 'Piano.webp',
-            'Batterie' => 'Batterie.webp'
+            'Guitares' => 'Guitare_.webp',
+            'Violon' => 'Violon_.webp',
+            'Piano' => 'Piano_.webp',
+            'Batterie' => 'Batterie_.webp'
         ];
     
         // 🔹 Stocker les catégories pour les retrouver facilement
@@ -36,14 +36,14 @@ class Jeu3villagreen extends Fixture
     
         // 🔹 Liste des sous-catégories avec association aux catégories
         $sousCategoriesData = [
-            ['guitare_electrique.webp', 'Guitare electrique', 'Guitares'],
-            ['Piano_a_queue.webp', 'Piano a queue', 'Piano'],
-            ['batterie_electroniques.webp', 'Batterie electroniques', 'Batterie'],
-            ['Cordes_frottées.webp', 'Cordes frotées', 'Violon'],
-            ['Instrument_folklore.webp', 'Intrument folklore', 'Violon'],
-            ['guitare_acoustique.webp', 'Guitare acoustique', 'Guitares'],
-            ['syntétiseur.webp', 'Syntétiseur', 'Piano'],
-            ['Batterie_acoustiques.webp', 'Batterie acoustiques', 'Batterie']
+            ['guitare_electrique_.webp', 'Guitare electrique', 'Guitares'],
+            ['Piano_a_queue_.webp', 'Piano a queue', 'Piano'],
+            ['batterie_electroniques_.webp', 'Batterie electroniques', 'Batterie'],
+            ['Cordes_frottées_.webp', 'Cordes frotées', 'Violon'],
+            ['Instrument_folklore_.webp', 'Intrument folklore', 'Violon'],
+            ['guitare_acoustique_.webp', 'Guitare acoustique', 'Guitares'],
+            ['syntétiseur_.webp', 'Syntétiseur', 'Piano'],
+            ['Batterie_acoustiques_.webp', 'Batterie acoustiques', 'Batterie']
         ];
     
         foreach ($sousCategoriesData as [$image, $nom, $nomCategorie]) {
@@ -64,10 +64,10 @@ class Jeu3villagreen extends Fixture
     
         // 🔹 Liste des produits avec association aux catégories et fournisseurs
         $produitsData = [
-            [15.50, 'Guitare Electrique', 50, 'Gibson_SG_Standard_64_Maestro_CH_ULA.jpg', 'Guitare Electrique', 'Une guitare électrique', 'Guitares', 1,1],
-            [25.00, 'Piano a queue', 200, 'Kawai_GL_10_Grand_Piano.jpg', 'Produit B', 'Description détaillée du produit', 'Piano', 2,2],
-            [12.75, 'Batterie electronique', 150, "Millenium_MPS-850_E-Drum_Set.jpg", 'Produit C', 'Description détaillée du produit C', 'Batterie', 3,3],
-            [18.00, 'Violoncelle', 20, 'Scala_Vilagio_L.V._Montagnana_Cello.jpg', 'Violoncelle', 'Violoncelle professionnel avec un son riche.', 'Violon', 4,4]
+            [15.50, 'Guitare Electrique', 50, 'Gibson_SG_Standard_64_Maestro_CH_ULA_.jpg', 'Guitare Electrique', 'Une guitare électrique', 'Guitares', 1,1],
+            [25.00, 'Piano a queue', 200, 'Kawai_GL_10_Grand_Piano_.jpg', 'Produit B', 'Description détaillée du produit', 'Piano', 2,2],
+            [12.75, 'Batterie electronique', 150, "Millenium_MPS-850_E-Drum_Set_.jpg", 'Produit C', 'Description détaillée du produit C', 'Batterie', 3,3],
+            [18.00, 'Violoncelle', 20, 'Scala_Vilagio_L.V._Montagnana_Cello_.jpg', 'Violoncelle', 'Violoncelle professionnel avec un son riche.', 'Violon', 4,4]
         ];
     
         foreach ($produitsData as [$prix, $nom, $stock, $image, $libelleCourt, $libelleLong, $nomCategorie, $idFournisseur,$idsous_categorie]) {
