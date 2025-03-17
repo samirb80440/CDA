@@ -61,6 +61,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Contact::class, mappedBy: 'utilisateur')]
     private Collection $contacts;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresselivrai = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adressefactu = null;
+
     public function __construct()
     {
         $this->commande = new ArrayCollection();
@@ -265,6 +271,30 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
                 $contact->setUtilisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdresseLivrai(): ?string
+    {
+        return $this->adresselivrai;
+    }
+
+    public function setAdresseLivrai(?string $adresse_livrai): static
+    {
+        $this->adresselivrai = $adresse_livrai;
+
+        return $this;
+    }
+
+    public function getAdresseFactu(): ?string
+    {
+        return $this->adressefactu;
+    }
+
+    public function setAdresseFactu(?string $adresse_factu): static
+    {
+        $this->adressefactu = $adresse_factu;
 
         return $this;
     }

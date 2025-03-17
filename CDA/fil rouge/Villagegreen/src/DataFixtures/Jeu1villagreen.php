@@ -19,14 +19,14 @@ class Jeu1villagreen extends Fixture
     public function load(ObjectManager $manager): void
     {
         $utilisateursData = [
-            ['Alice','Dupont','alice.dupont@gmail.com', true, 50, '0612345678', 'password123','ROLE_ADMIN',1],
-            ['Jean','Martin','jean.martin@yagoo.com',false, 70, '0623456789', 'password456','ROLE_USER',2],
-            ['Claire','Leroy','claire.leroy@fake.com',true, 50, '0634567890', 'password789','ROLE_USER',3],
-            ['Paul','Durand','paul.durand@random.com',false, 70, '0645678901', 'password012','ROLE_USER',4],
-            ['Sophie','Lambert','sophie.lambert@outlook.com',true, 50, '0656789012', 'password345','ROLE_USER',5]
+            ['Alice','Dupont','alice.dupont@gmail.com', true, 50, '0612345678', 'password123','Paris','Paris','ROLE_ADMIN',1],
+            ['Jean','Martin','jean.martin@yagoo.com',false, 70, '0623456789', 'password456','Paris','Paris','ROLE_USER',2],
+            ['Claire','Leroy','claire.leroy@fake.com',true, 50, '0634567890', 'password789','Paris','Paris','ROLE_USER',3],
+            ['Paul','Durand','paul.durand@random.com',false, 70, '0645678901', 'password012','Paris','Paris','ROLE_USER',4],
+            ['Sophie','Lambert','sophie.lambert@outlook.com',true, 50, '0656789012', 'password345','Paris','Paris','ROLE_USER',5]
         ];
 
-        foreach ($utilisateursData as [$nom, $prenom, $email, $cate, $coeff, $tel, $mdp, $role]) {
+        foreach ($utilisateursData as [$nom, $prenom, $email, $cate, $coeff, $tel, $mdp,$adress_factu,$adress_livrai, $role]) {
             $user = new Utilisateur();
             $user->setNomCli($nom)
                  ->setPrenomcli($prenom)
@@ -35,7 +35,10 @@ class Jeu1villagreen extends Fixture
                  ->setCoeffCli($coeff)
                  ->setRoles([$role])
                  ->setNumTelephone($tel)
-                 ->setPassword($this->passwordHasher->hashPassword($user, $mdp));
+                 ->setPassword($this->passwordHasher->hashPassword($user, $mdp))
+                 ->setAdresseLivrai($adress_livrai)
+                 ->setAdresseFactu($adress_factu);
+
             
             $manager->persist($user);
         }

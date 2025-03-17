@@ -52,9 +52,7 @@ class Commande
     #[ORM\Column]
     private ?int $tauxTva = null;
 
-    #[ORM\Column(length: 150)]
-    private ?string $adresseLivrai = null;
-
+ 
     #[ORM\Column]
     private ?int $prixHtva = null;
 
@@ -64,8 +62,7 @@ class Commande
     #[ORM\Column]
     private ?int $totalHtva = null;
 
-    #[ORM\Column(length: 150)]
-    private ?string $adresseFactu = null;
+   
 
     #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'commandes')]
     private ?Utilisateur $utilisateur = null;
@@ -78,6 +75,12 @@ class Commande
      */
     #[ORM\OneToMany(targetEntity: Contient::class, mappedBy: 'commande')]
     private Collection $contients;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse_livrai = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse_factu = null;
 
     public function __construct()
     {
@@ -233,17 +236,8 @@ class Commande
         return $this;
     }
 
-    public function getAdresseLivrai(): ?string
-    {
-        return $this->adresseLivrai;
-    }
-
-    public function setAdresseLivrai(string $adresseLivrai): static
-    {
-        $this->adresseLivrai = $adresseLivrai;
-
-        return $this;
-    }
+   
+    
 
     public function getPrixHtva(): ?int
     {
@@ -281,17 +275,7 @@ class Commande
         return $this;
     }
 
-    public function getAdresseFactu(): ?string
-    {
-        return $this->adresseFactu;
-    }
-
-    public function setAdresseFactu(string $adresseFactu): static
-    {
-        $this->adresseFactu = $adresseFactu;
-
-        return $this;
-    }
+    
 
     public function getUtilisateur(): ?Utilisateur
     {
@@ -343,6 +327,30 @@ class Commande
                 $contient->setCommande(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdresseLivrai(): ?string
+    {
+        return $this->adresse_livrai;
+    }
+
+    public function setAdresseLivrai(?string $adresse_livrai): static
+    {
+        $this->adresse_livrai = $adresse_livrai;
+
+        return $this;
+    }
+
+    public function getAdresseFactu(): ?string
+    {
+        return $this->adresse_factu;
+    }
+
+    public function setAdresseFactu(?string $adresse_factu): static
+    {
+        $this->adresse_factu = $adresse_factu;
 
         return $this;
     }

@@ -60,20 +60,18 @@ class Jeu4villagreen extends Fixture
         $commande->setDateCom($datecom);
         $commande->setTotalTtc($totalttc);
         $commande->setTauxTva($tauxtva);
-        $commande->setAdresseLivrai($adresselivrais);
         $commande->setPrixHtva($prixhtva);
         $commande->setIndicReduc($indicereduc);
         $commande->setTotalHtva($totalHtva);
-        $commande->setAdresseFactu($adressefactu);
-        
         $bonDeLivraison =$manager->getRepository(Bondelivraison::class)->find($idBonlivraison);
         $commande->setBondelivraison($bonDeLivraison);
-        
-        
-        
-        $utilisateurs=$manager->getRepository(Utilisateur::class)->find($idUtilisateur);
-        $commande->setUtilisateur($utilisateurs);
-         
+
+        $utilisateur = $manager->getRepository(Utilisateur::class)->find($idUtilisateur);
+        if ($utilisateur) {
+            $commande->setUtilisateur($utilisateur);
+            $commande->setAdresseLivrai($utilisateur->getAdresseLivrai());
+            $commande->setAdresseFactu($utilisateur->getAdresseFactu());
+        }
 
         $manager->persist($commande);
 
