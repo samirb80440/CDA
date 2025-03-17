@@ -8,12 +8,13 @@
 <h1 class="my-2  ">Detail du compte</h1>
         <h2>mes informations personnel</h2>
         <div class="card text-bg-dark my-3" >
-            <div class="card-header">adresse</div>
+            <div class="card-header">Profil</div>
             <div class="card-body">
-                <h5 class="card-title">{{ utilisateur.nomcli}} {{ utilisateur.prenomcli | upper}}</h5>
-                <p class="card-text">{{ utilisateur.email }}</p>
-                <p class="card-text">{{ utilisateur.numtelephone}}</p>
-                <p class="card-text">{{ utilisateur.adresselivrai}}</p>
-                <p class="card-text">{{ utilisateur.adressefactu}}</p>
+                <h5 class="card-title">Nom : {{ utilisateur.nomcli}} {{ utilisateur.prenomcli | upper}}</h5>
+                <p class="card-text">Categorie client : {{ utilisateur.catecli}}</p>
+                <p class="card-text">Mail : {{ utilisateur.email }}</p>
+                <p class="card-text">Numero de telephone : {{ utilisateur.numtelephone}}</p>
+                <p class="card-text">Adresse de livraison : {{ utilisateur.adresselivrai}}</p>
+                <p class="card-text">Adresse de facturation : {{ utilisateur.adressefactu}}</p>
 
 {% endblock %}

@@ -44,9 +44,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $nomcli = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $catecli = null;
-
-    #[ORM\Column(nullable: true)]
     private ?int $coeffcli = null;
 
     #[ORM\Column(length: 10, nullable: true)]
@@ -66,6 +63,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adressefactu = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $catecli = null;
 
     public function __construct()
     {
@@ -197,17 +197,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isCatecli(): ?bool
-    {
-        return $this->catecli;
-    }
-
-    public function setCatecli(?bool $catecli): static
-    {
-        $this->catecli = $catecli;
-
-        return $this;
-    }
+   
 
     public function getCoeffcli(): ?int
     {
@@ -295,6 +285,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAdresseFactu(?string $adresse_factu): static
     {
         $this->adressefactu = $adresse_factu;
+
+        return $this;
+    }
+
+    public function getCatecli(): ?string
+    {
+        return $this->catecli; 
+    }
+
+    public function setCatecli(?string $catecli): static
+    {
+        $this->catecli = $catecli;
 
         return $this;
     }
