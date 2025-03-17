@@ -25,6 +25,7 @@
 							<th class="text-center">Prix</th>
 							<th class="text-center">Quantité</th>
 							<th class="text-center">Total</th>
+							<th class="text-center">Boutons</th>
 						</tr>
 
 					</thead>
@@ -46,7 +47,7 @@
 							{% set prixVente = (element.produit.prixAchat * (1 + coefficient)) | number_format(2, '.', ' ') %}
                            
 							<tr>
-								<td class="text-center align-middle"><img src="{{ asset ('Image/article/' ~ element.produit.photoProduit) }}" alt="{{ element.produit.LibCourtProd}}-food" class="imageplat img-fluid"></td>
+								<td class="text-center align-middle"><img src="{{ asset ('Image/article/' ~ element.produit.photoProduit) }}" alt="{{ element.produit.LibCourtProd}}-food" class="d-none d-md-block img-fluid rounded object-fit-cover" style="height: 135px"></td>
 								<td class="text-center align-middle">{{ element.produit.nomProd }}</td>
 								<td class="text-center align-middle">{{ prixVente | number_format(2,'.','')}}€</td>
 								<td class="text-center align-middle">{{ element.quantite }}</td>
