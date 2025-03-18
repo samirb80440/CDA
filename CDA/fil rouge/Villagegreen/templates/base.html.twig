@@ -49,80 +49,79 @@
 						<li class="nav-item ">
 							<a class="nav-link { app.request.attributes.get('_route') == 'app_contact' ? 'active' : '' }}" href="{{ path('app_contact') }}">Contact</a>
 						</li>
+						{% if not app.user %}
+							<li class="nav-item ">
+								<a class="nav-link {{ app.request.attributes.get('_route') == 'app_registration' ? 'active' : '' }}" href="{{ path('app_registration') }}">Inscription</a>
+							</li>
+						{% endif %}
 						{% if app.user %}
 							<li class="nav-item">
 								<a class="nav-link {{ app.request.attributes.get('_route') == 'app_utilisateur' ? 'active' : '' }}" href="{{ path('app_utilisateur') }}">
-								<i class="fa-solid fa-address-card"></i>
+									<i class="fa-solid fa-address-card"></i>
 								</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('app_logout') }}">
-								<i class="fa-solid fa-right-from-bracket" style="color: #63E6BE;"></i>
+									<i class="fa-solid fa-right-from-bracket" style="color:rgb(240, 16, 16);"></i>
 								</a>
 							</li>
-							  {% else %}
-							  	<li class="nav-item ">
-							<a class="nav-link { app.request.attributes.get('_route') == 'app_login' ? 'active' : '' }}" href="{{ path('app_login') }}">Connexion</a>
-						</li>
+						{% else %}
+							<li class="nav-item ">
+								<a class="nav-link { app.request.attributes.get('_route') == 'app_login' ? 'active' : '' }}" href="{{ path('app_login') }}">Connexion</a>
+							</li>
 						{% endif %}
-						</li>
-						<li class="nav-item ">
-							<a class="nav-link" href="{{ path('app_panier')}}">
-								<i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
-							</a>
-						</li>
+					</li>
+					<li class="nav-item ">
+						<a class="nav-link" href="{{ path('app_panier')}}">
+							<i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
+						</a>
+					</li>
 
-					</ul>
-				</div>
+				</ul>
 			</div>
-		</nav>
-	</header>
-	<body>
+		</div>
+	</nav>
+</html></header><body>
 
-		{% block body %}{% endblock %}
-		<footer>
-			<nav class="navbar navbar-expand-lg d-flex colornav mt-3  fixed-bottom  col-lg-12justify-content-center">
-				<div class="container-fluid">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav d-flex flex-wrap  justify-content-center">
-							<li class="nav-item px-5 dropup">
-								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Nous connaître
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a class="dropdown-item" href="#">Mention légales</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="#">Politique de confidentialité</a>
-									</li>
-									<li><hr class="dropdown-divider"></li>
-									<li>
-										<a class="dropdown-item" href="#">Qui sommes nous ?</a>
-									</li>
-								</ul>
+{% block body %}{% endblock %}
+<footer>
+	<nav class="navbar navbar-expand-lg d-flex colornav mt-3  fixed-bottom  col-lg-12justify-content-center">
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav d-flex flex-wrap  justify-content-center">
+					<li class="nav-item px-5 dropup">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Nous connaître
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="#">Mention légales</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Politique de confidentialité</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="#">Qui sommes nous ?</a>
 							</li>
 						</ul>
-						<ul class="navbar-nav  flex-wrap justify-content-center footer-icons">
-							<li class="nav-item">
-								<a class="nav-link px-5 " href="#"><img src="{{ asset ('Image/icones/icons8_twitter-30.png')}}"></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link px-5" href="#"><img src="{{ asset ('Image/icones/icons8_instagram_30(1).png')}}"></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link px-5" href="#"><img src="{{ asset ('Image/icones/icons8_facebook-30.png')}}"></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</footer>
-	</body>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</html>
-
+					</li>
+				</ul>
+				<ul class="navbar-nav  flex-wrap justify-content-center footer-icons">
+					<li class="nav-item">
+						<a class="nav-link px-5 " href="#"><img src="{{ asset ('Image/icones/icons8_twitter-30.png')}}"></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link px-5" href="#"><img src="{{ asset ('Image/icones/icons8_instagram_30(1).png')}}"></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link px-5" href="#"><img src="{{ asset ('Image/icones/icons8_facebook-30.png')}}"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</footer></body><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script></html>
