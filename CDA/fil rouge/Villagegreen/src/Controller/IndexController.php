@@ -6,6 +6,7 @@ use App\Entity\Produit;
 use App\Repository\ProduitRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\SousCategorieRepository;
+use App\Service\BarreSearchService;
 use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -107,5 +108,49 @@ class IndexController extends AbstractController
 
     }
 
+    #[Route('/recherche', name: 'app_recherche')]
+    public function ShowRecherche(BarreSearchService $searchService): Response
+    {
+        // Récupère la recherche depuis les paramètres GET
+        $recherche = $_GET['recherche'];
 
+        // Si la recherche correspond à un plat, on affiche les plats
+        if ($searchService->SearchProduit($recherche) != null) {
+            $produit = $searchService->SearchProduit($recherche);
+            $this->addFlash('success', count($produit).' produit(s) trouvé pour votre recherche');
+            return $this->render('catalogue/produits.html.twig', [
+                'produits' => $produit,
+            ]);
+        }
+
+        elseif ($searchService->SearchSouscategorie($recherche) != null) {
+            $sousCategorie = $searchService->SearchSouscategorie($recherche);
+            $this->addFlash('success', count($sousCategorie).' sous-categorie(s) trouvé pour votre recherche');
+            return $this->render('catalogue/sousCategories.html.twig', [
+                'sousCategories' => $sousCategorie ,
+            ]);
+        }
+        
+        // Si rien n'est trouvé, on redirige vers la page d'accueil
+        else {
+            $this->addFlash('danger', 'aucun resultat trouvé pour votre recherche');
+            return $this->redirectToRoute('app_index');
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

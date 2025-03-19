@@ -43,8 +43,9 @@
 								</li>
 							</ul>
 						</li>
-						<form class="d-flex" role="search">
-							<input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+						<form class="d-flex" role="search" action="{{ path('app_recherche') }}" method="GET">
+							<input class="form-control me-2" name="recherche" type="text" placeholder="Rechercher..." aria-label="Search">
+							<button class="btn btn-outline-secondary" type="submit">Rechercher</button>
 						</form>
 						<li class="nav-item ">
 							<a class="nav-link { app.request.attributes.get('_route') == 'app_contact' ? 'active' : '' }}" href="{{ path('app_contact') }}">Contact</a>
@@ -125,3 +126,4 @@
 		</div>
 	</nav>
 </footer></body><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script></html>
+
