@@ -42,7 +42,7 @@ class Jeu3villagreen extends Fixture
             ['Cordes_frottées_.webp', 'Cordes frotées', 'Violon'],
             ['Instrument_folklore_.webp', 'Intrument folklore', 'Violon'],
             ['guitare_acoustique_.webp', 'Guitare acoustique', 'Guitares'],
-            ['syntétiseur_.webp', 'Syntétiseur', 'Piano'],
+            ['syntétiseur_.webp', 'Piano Syntétiseur', 'Piano'],
             ['Batterie_acoustiques_.webp', 'Batterie acoustiques', 'Batterie']
         ];
     
