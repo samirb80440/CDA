@@ -83,7 +83,14 @@ class IndexController extends AbstractController
     #[Route('/produits-{id}', name:'app_selectproduit', requirements: ['id' => '\d+'])]
     public function SelectProduit(int $id ): Response
     {
+        $souscategories = $this->sousCategorieRepo->find($id);
 
+        // Vérifier si la sous-catégorie existe
+        if (!$souscategories) {
+            // Si la sous-catégorie n'existe pas, afficher un message d'erreur ou rediriger
+            $this->addFlash('danger', 'Sous-catégorie introuvable.');
+            return $this->redirectToRoute('app_index');
+        }
 
         $souscategories = $this->sousCategorieRepo->find($id);
         $produits = $souscategories->getProduits();

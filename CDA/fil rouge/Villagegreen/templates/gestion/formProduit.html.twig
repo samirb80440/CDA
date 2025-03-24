@@ -11,7 +11,7 @@
             {{ form_errors(form) }}
 
             <div class="row">
-                {% for field in [form.nomProd, form.prixAchat, form.stockprod, form.fournisseur] %}
+                {% for field in [form.nomProd, form.prixAchat, form.stockprod, form.fournisseur,form.souscategorie,form.categorie] %}
                     <div class="col-12 col-md-6 mb-3">
                         {{ form_label(field, null, {'attr': {'class': 'form-label'}}) }}
                         {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
@@ -41,23 +41,11 @@
                         <img src="{{ asset('/assets/Image/article/' ~ produit.photoProduit) }}" alt="Image du produit" width="150" class="img-thumbnail">
                     </div>
                 {% endif %}
-            </div>
-
-            <div class="mb-3">
-                <strong class="d-block mb-2">Sous-catégories affiliées :</strong>
-                <ul class="list-group">
-                    {% for sousCategorie in form.souscategorie %}
-                        <li class="list-group-item d-flex align-items-center">
-                            {{ form_widget(sousCategorie, {'attr': {'class': 'form-check-input me-2'}}) }}
-                            {{ form_label(sousCategorie, null, {'attr': {'class': 'form-check-label'}}) }}
-                        </li>
-                    {% endfor %}
-                </ul>
-				 <div class="text-end">
-                {{ form_widget(form.Save, {'attr': {'class': 'btn btn-primary'}}) }}
+				 <div class="col mt-5 mb-2 position-relative">
+                {{ form_widget(form.Save, {'attr': {'class': 'btn-primary'}}) }}
             </div>
             </div>
-
+			</div>
            
 
             {{ form_end(form) }}
