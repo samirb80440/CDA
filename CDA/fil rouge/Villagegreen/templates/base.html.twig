@@ -66,6 +66,11 @@
 									<i class="fa-solid fa-right-from-bracket" style="color:rgb(240, 16, 16);"></i>
 								</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('app_gestion') }}">
+								<i class="fa-solid fa-list-check"></i>
+								</a>
+							</li>
 						{% else %}
 							<li class="nav-item ">
 								<a class="nav-link { app.request.attributes.get('_route') == 'app_login' ? 'active' : '' }}" href="{{ path('app_login') }}">Connexion</a>

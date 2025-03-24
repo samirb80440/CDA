@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information personnelle{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center bg-dark rounded my-3 p-4 text-light">
+        <div class="col-12 col-md-8">
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <div class="row">
+                {% for field in [form.nomProd, form.prixAchat, form.stockprod, form.fournisseur] %}
+                    <div class="col-12 col-md-6 mb-3">
+                        {{ form_label(field, null, {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(field) }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form_row(form.LibCourtProd) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_row(form.libLongProd) }}
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    {{ form_label(form.photoProduit, null, {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.photoProduit, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.photoProduit) }}
+                </div>
+
+                {% if produit is defined and produit.photoProduit is not null %}
+                    <div class="col-12 col-md-6 mb-3 text-center">
+                        <p>Image actuelle :</p>
+                        <img src="{{ asset('uploads/photos/article/'  ~ produit.photoProduit) }}" alt="Image du produit" width="150" class="img-thumbnail">
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <strong class="d-block mb-2">Sous-catégories affiliées :</strong>
+                <ul class="list-group">
+                    {% for sousCategorie in form.souscategorie %}
+                        <li class="list-group-item d-flex align-items-center">
+                            {{ form_widget(sousCategorie, {'attr': {'class': 'form-check-input me-2'}}) }}
+                            {{ form_label(sousCategorie, null, {'attr': {'class': 'form-check-label'}}) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+				 <div class="text-end">
+                {{ form_widget(form.Save, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+            </div>
+
+           
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

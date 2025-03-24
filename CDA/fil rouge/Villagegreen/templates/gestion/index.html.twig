@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Produits{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4">Gestion des Produits</h1>
+
+    <a href="{{ path('app_gestion_produit_ajout') }}" class="btn btn-primary mb-3">Ajouter un Produit</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Catégorie</th>
+                <th>Fournisseur</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.nomProd }}</td>
+                    <td>{{ produit.prixAchat }} €</td>
+                    <td>{{ produit.stockprod }}</td>
+                    <td>{{ produit.categorie ? produit.categorie.nomCategorie : 'Sans catégorie' }}</td>
+                    <td>{{ produit.fournisseur ? produit.fournisseur.nomFournisseur : 'Sans fournisseur' }}</td>
+                    <td>
+                        {% if produit.photoProduit %}
+                            <img src="{{ asset('assets/images/produits/' ~ produit.photoProduit) }}" alt="Image de {{ produit.nomProd }}" width="50">
+                        {% else %}
+                            <span class="text-muted">Aucune image</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">Aucun produit trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
