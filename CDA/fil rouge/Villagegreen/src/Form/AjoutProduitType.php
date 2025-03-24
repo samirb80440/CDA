@@ -25,6 +25,17 @@ class AjoutProduitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+        ->add('nomProd', TextType::class, [
+            'label' => 'Nom du produit',
+            'constraints' => [
+                new NotBlank(['message' => 'Le nom est requis.']),
+                new Length([
+                    'max' => 255,
+                    'maxMessage' => 'Le nom ne peut pas dépasser {{ limit }} caractères.'
+                ])
+            ],
+            'attr' => ['class' => 'form-control'],
+        ])
             ->add('prixAchat', MoneyType::class, [
                 'currency' => 'EUR',
                 'label' => 'Prix d\'achat',
@@ -33,17 +44,6 @@ class AjoutProduitType extends AbstractType
                     new Positive(['message' => 'Le prix doit être positif.'])
                 ],
                 'attr' => ['class' => 'col-3 form-control'],
-            ])
-            ->add('nomProd', TextType::class, [
-                'label' => 'Nom du produit',
-                'constraints' => [
-                    new NotBlank(['message' => 'Le nom est requis.']),
-                    new Length([
-                        'max' => 255,
-                        'maxMessage' => 'Le nom ne peut pas dépasser {{ limit }} caractères.'
-                    ])
-                ],
-                'attr' => ['class' => 'form-control'],
             ])
             ->add('stockprod', IntegerType::class, [
                 'label' => 'Stock disponible',

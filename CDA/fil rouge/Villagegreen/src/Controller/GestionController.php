@@ -75,26 +75,9 @@ final class GestionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Gérer l'upload de l'image
-            $photoProduit = $form->get('photoProduit')->getData();
-            if ($photoProduit) {
-                $originalFilename = pathinfo($photoProduit->getClientOriginalName(), PATHINFO_FILENAME);
-                // Générer un nom unique pour le fichier
-                $newFilename = uniqid().'.'.$photoProduit->guessExtension();
-
-                try {
-                    // Déplacer le fichier téléchargé dans le répertoire voulu
-                    $photoProduit->move(
-                        $this->getParameter('photo_directory'), // Chemin vers le répertoire des images
-                        $newFilename
-                    );
-                    // Sauvegarder le nom du fichier dans l'entité Produit
-                    $produit->setPhotoProduit($newFilename);
-                } catch (FileException $e) {
-                    // Gérer les erreurs d'upload
-                    $this->addFlash('error', 'Erreur lors du téléchargement de l\'image.');
-                }
-            }
+              $file = $form->get('photoProduit')->getData();
+            $file->move($this->getParameter('kernel.project_dir') . '/assets/Image/article', $file->getClientOriginalName());
+            $produit->setPhotoProduit($file->getClientOriginalName());
 
             // Sauvegarder le produit dans la base de données
             $this->entityManager->persist($produit);

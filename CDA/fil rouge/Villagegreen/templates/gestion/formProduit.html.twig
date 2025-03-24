@@ -38,7 +38,7 @@
                 {% if produit is defined and produit.photoProduit is not null %}
                     <div class="col-12 col-md-6 mb-3 text-center">
                         <p>Image actuelle :</p>
-                        <img src="{{ asset('uploads/photos/article/'  ~ produit.photoProduit) }}" alt="Image du produit" width="150" class="img-thumbnail">
+                        <img src="{{ asset('/assets/Image/article/' ~ produit.photoProduit) }}" alt="Image du produit" width="150" class="img-thumbnail">
                     </div>
                 {% endif %}
             </div>

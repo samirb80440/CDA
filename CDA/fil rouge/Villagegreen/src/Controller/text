@@ -1,0 +1,48 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // Sauvegarder le produit dans la base de données
+            $this->entityManager->persist($produit);
+            $this->entityManager->flush();
+
+            // Afficher un message de succès et rediriger vers la liste des produits
+            $this->addFlash('success', 'Produit ajouté avec succès!');
+            return $this->redirectToRoute('app_gestion');
+        }
+
+        // Afficher le formulaire de création de produit
+        return $this->render('gestion/formProduit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+}
