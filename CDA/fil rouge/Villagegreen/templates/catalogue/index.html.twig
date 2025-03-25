@@ -9,7 +9,7 @@
 			<div class="row justify-content-center">
 				{% for categorie in categories %}
 					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-						<div class="card" style="width: 10rem;">
+						<div class="card imageanime " style="width: 10rem;">
 						<a href="{{ path('app_selectSousCategorie', {id: categorie.id }) }}">
 							<img src="{{ asset('Image/categorie/' ~ categorie.imageCategorie) }}" class="card-img-top" alt="{{ categorie.nomCategorie }}">
 							<div class="card-body">
@@ -22,24 +22,36 @@
 			</div>
 		</div>
 	</div>
-
-    <div class="fs-1 ms-md-5">Les Intruments :</div>
+	 <div class="fs-1 ms-md-5">Les Intruments :</div>
 		<div class="container my-5">
-			<div class="row justify-content-center">
-				{% for produit in produits %}
-					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-					<a href="{{ path('app_selectproduit',{id:produit.id}) }}">
-						<div class="card" style="width: 10rem;">
-							<img src="{{ asset('Image/article/' ~ produit.photoProduit) }}" class="card-img-top" alt="{{ produit.nomProd }}">
-							<div class="card-body">
-								<h5 class="card-title">{{ produit.nomProd}}</h5>
-							</div>
-						</div>
-						</a>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
+<div id="produitCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for produit in produits %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <div class="d-flex justify-content-center">
+                    <a href="{{ path('app_selectproduit', {id: produit.id}) }}">
+                        <div class="card text-center shadow-lg" style="width: 18rem;">
+                            <img src="{{ asset('Image/article/' ~ produit.photoProduit) }}" class="card-img-top" alt="{{ produit.nomProd }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ produit.nomProd }}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Boutons de navigation -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#produitCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Précédent</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#produitCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Suivant</span>
+    </button>
+</div>
+
 
 {% endblock %}

@@ -37,3 +37,30 @@ a {
 #banniere {
     grid-area: 2 / 1 / 3 / 6;
 }
+
+.imageanime {
+    transition: 1s ease;
+}
+
+.imageanime:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+
+
+
+
+.carousel-item {
+    text-align: center;
+}
+
+.carousel .card {
+    margin: auto;
+}
+
+.card img {
+    max-height: 250px;
+    object-fit: contain;
+}
