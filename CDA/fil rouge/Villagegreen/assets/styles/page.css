@@ -64,3 +64,9 @@ a {
     max-height: 250px;
     object-fit: contain;
 }
+.card {
+    border: 3px solid #003366; /* Bleu foncé */
+    border-radius: 15px; /* Arrondi des bords */
+    padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optionnel pour un effet d'ombre */
+}

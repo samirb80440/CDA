@@ -10,7 +10,7 @@
 				{% for sous_categorie in sous_categories %}
                    {% for produit in sous_categorie.produits %}
 					<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-						<div class="card" style="width: 10rem;">
+						<div class="card card border-primary rounded-3" style="width: 10rem;">
                        <a href="{{ path('app_selectproduit',{id:produit.id}) }}">
 							<img src="{{ asset('Image/sous_categorie/' ~ sous_categorie.imageSousCategorie) }}" class="card-img-top" alt="{{ sous_categorie.nomSousCategorie }}">
 							<div class="card-body">

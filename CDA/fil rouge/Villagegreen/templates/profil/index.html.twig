@@ -15,6 +15,10 @@
                 <p class="card-text">Catégorie client : {{ utilisateur.catecli }}</p>
                 <p class="card-text">Mail : {{ utilisateur.email }}</p>
                 <p class="card-text">Numéro de téléphone : {{ utilisateur.numtelephone }}</p>
+                 <a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover justify-content-end col-4" href="{{ path('app_modifier_password')}}">
+					<button class="btn btn-primary">Modifier mot de passe</button>
+				</a>
+
 
                 <p class="card-text">
                     Adresse de livraison : {{ utilisateur.adresselivrai }}
