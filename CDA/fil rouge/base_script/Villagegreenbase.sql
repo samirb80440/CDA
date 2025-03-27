@@ -17,7 +17,7 @@ CREATE TABLE utilisateur(
 CREATE TABLE Bon_de_livraison(
    Id_Bon_de_livraison VARCHAR(50) ,
    num_livrais VARCHAR(50) ,
-   logo_entreprise VARCHAR(10) ,
+   logo_entreprise VARCHAR(50) ,
    date_liv_com DATE,
    PRIMARY KEY(Id_Bon_de_livraison)
 );
