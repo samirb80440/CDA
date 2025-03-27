@@ -33,4 +33,32 @@ final class ContactController extends AbstractController
             'form' => $form
         ]);
     }
+
+    #[Route('/politique_de_confidentialite', name: 'app_pdf')]
+    public function politiqueconf(): Response
+    {
+        // Rendu de la vue de politique de confidentialité
+        return $this->render('contact/politique_de_confidentialite.html.twig');
+    }
+
+    // Définition de la route pour la page de mention légale
+    #[Route('/mention_legale', name: 'app_mention_legale')]
+    public function mention_legale(): Response
+    {
+        // Rendu de la vue de mention légale
+        return $this->render('contact/mention_legale.html.twig');
+    }
+
+
+    #[Route('/qui_sommes_nous', name: 'app_qui_sommes_nous')]
+    public function qui_sommes_nous(): Response
+    {
+        // Rendu de la vue de mention légale
+        return $this->render('contact/qui_sommes_nous.html.twig');
+    }
+
+
+
+
+
 }

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui sommes-nous ?{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center">À propos de nous</h1>
+        <p class="mt-4">
+            Bienvenue sur <strong>GreenVillage</strong>, votre destination en ligne dédiée aux passionnés de musique !  
+            Nous proposons une large gamme d’instruments de musique, allant des guitares aux pianos, en passant par les percussions et les équipements de studio.
+        </p>
+
+        <h2 class="mt-4">Notre Mission</h2>
+        <p>
+            Chez <strong>GreenVillage</strong>, notre objectif est de rendre la musique accessible à tous, 
+            que vous soyez un musicien débutant ou un professionnel expérimenté. 
+            Nous sélectionnons avec soin nos produits pour garantir la meilleure qualité au meilleur prix.
+        </p>
+
+        <h2 class="mt-4">Pourquoi choisir GreenVillage ?</h2>
+        <ul>
+            <li>Un large choix d’instruments de grandes marques</li>
+            <li>Des conseils d’experts pour vous guider dans vos achats</li>
+            <li>Une livraison rapide et sécurisée</li>
+            <li>Un service client à l’écoute de vos besoins</li>
+        </ul>
+
+        <h2 class="mt-4">Nous contacter</h2>
+        <p>
+            Pour toute question ou demande d'information, n'hésitez pas à nous contacter via notre 
+            <a href="{{ path('app_contact') }}">formulaire de contact</a>.  
+            Nous serons ravis de vous aider dans votre aventure musicale !
+        </p>
+    </div>
+{% endblock %}
