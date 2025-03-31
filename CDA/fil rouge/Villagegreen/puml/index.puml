@@ -4,6 +4,7 @@ class SousCategorie {
 	imageSousCategorie : string
 	nomSousCategorie : string
 	<color:#0000dd>categorie : Categorie</color>
+	<color:#0000dd>produits : Produit[]</color>
 }
 
 class Commande {
@@ -19,15 +20,15 @@ class Commande {
 	nomCom : string
 	dateCom : DateTimeInterface
 	totalTtc : int
-	tauxTva : float
-	adresseLivrai : string
+	tauxTva : int
 	prixHtva : int
-	indicReduc : bool
+	indicReduc : int
 	totalHtva : int
-	adresseFactu : string
 	<color:#0000dd>utilisateur : Utilisateur</color>
 	<color:#0000dd>bondelivraison : Bondelivraison</color>
 	<color:#0000dd>contients : Contient[]</color>
+	adresse_livrai : string
+	adresse_factu : string
 }
 
 class Quantiter {
@@ -52,10 +53,13 @@ class Utilisateur {
 	password : string
 	<color:#0000dd>commande : Commande[]</color>
 	nomcli : string
-	catecli : bool
 	coeffcli : int
 	numtelephone : string
 	prenomcli : string
+	<color:#0000dd>contacts : Contact[]</color>
+	adresselivrai : string
+	adressefactu : string
+	catecli : string
 }
 
 class Produit {
@@ -70,6 +74,7 @@ class Produit {
 	<color:#0000dd>fournisseur : Fournisseur</color>
 	<color:#0000dd>contients : Contient[]</color>
 	<color:#0000dd>quantiters : Quantiter[]</color>
+	<color:#0000dd>souscategorie : SousCategorie</color>
 }
 
 class Bondelivraison {
@@ -97,7 +102,15 @@ class Contient {
 	<color:#0000dd>produit : Produit</color>
 }
 
+class Contact {
+	**id : int**
+	Message : string
+	date : DateTimeInterface
+	<color:#0000dd>utilisateur : Utilisateur</color>
+}
+
 SousCategorie "*"--"1" Categorie
+SousCategorie "1"--"*" Produit
 Commande "*"--"1" Utilisateur
 Commande "*"--"1" Bondelivraison
 Commande "1"--"*" Contient
@@ -105,6 +118,7 @@ Quantiter "*"--"1" Bondelivraison
 Quantiter "*"--"1" Produit
 Categorie "1"--"*" Produit
 Utilisateur "1"--"*" Commande
+Utilisateur "1"--"*" Contact
 Produit "*"--"1" Fournisseur
 Produit "1"--"*" Contient
 

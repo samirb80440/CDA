@@ -74,11 +74,11 @@
     },
     "scripts": {
         "fixtures": [
-            "symfony console d:d:d --force --if-exists",
-            "symfony console d:d:c",
-            "symfony console d:s:u --force",
-            "symfony console d:f:l --no-interaction --append",
-            "symfony console make:puml"
+            "php bin/console d:d:d --force --if-exists",
+            "php bin/console d:d:c",
+            "php bin/console d:s:u --force",
+            "php bin/console d:f:l --no-interaction --append",
+            "php bin/console make:puml"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
