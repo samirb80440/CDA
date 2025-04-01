@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Passer une commande{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center">Passer une commande</h1>
+
+    {% if app.flashes('success') %}
+        <div class="alert alert-success">
+            {% for message in app.flashes('success') %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if form is defined %}
+        {{ form_start(form, {'attr': {'class': 'mt-4'}}) }}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.numCom) }}
+                    {{ form_row(form.nomCom) }}
+                    {{ form_row(form.dateCom) }}
+                    {{ form_row(form.utilisateur) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.prixAchatCom) }}
+                    {{ form_row(form.prixVenteCom) }}
+                    {{ form_row(form.conditionReg) }}
+                    {{ form_row(form.reduction) }}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Valider la commande</button>
+        {{ form_end(form) }}
+    {% else %}
+        <div class="alert alert-warning text-center">
+            Votre panier est vide. <a href="{{ path('app_panier') }}">Retour au panier</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

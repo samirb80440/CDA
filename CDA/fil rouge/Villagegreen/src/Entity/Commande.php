@@ -76,12 +76,6 @@ class Commande
     #[ORM\OneToMany(targetEntity: Contient::class, mappedBy: 'commande')]
     private Collection $contients;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $adresse_livrai = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $adresse_factu = null;
-
     public function __construct()
     {
         $this->contients = new ArrayCollection();
@@ -331,27 +325,5 @@ class Commande
         return $this;
     }
 
-    public function getAdresseLivrai(): ?string
-    {
-        return $this->adresse_livrai;
-    }
-
-    public function setAdresseLivrai(?string $adresse_livrai): static
-    {
-        $this->adresse_livrai = $adresse_livrai;
-
-        return $this;
-    }
-
-    public function getAdresseFactu(): ?string
-    {
-        return $this->adresse_factu;
-    }
-
-    public function setAdresseFactu(?string $adresse_factu): static
-    {
-        $this->adresse_factu = $adresse_factu;
-
-        return $this;
-    }
+   
 }
