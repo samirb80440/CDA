@@ -6,14 +6,14 @@
 <div class="container mt-4">
     <h1 class="text-center">Passer une commande</h1>
 
-    {% if app.flashes('success') %}
+    {# Affichage des messages flash en cas de succès #}
+    {% for message in app.flashes('success') %}
         <div class="alert alert-success">
-            {% for message in app.flashes('success') %}
-                {{ message }}
-            {% endfor %}
+            {{ message }}
         </div>
-    {% endif %}
+    {% endfor %}
 
+    {# Vérification que le formulaire est défini avant de l'afficher #}
     {% if form is defined %}
         {{ form_start(form, {'attr': {'class': 'mt-4'}}) }}
             <div class="row">
@@ -27,11 +27,12 @@
                     {{ form_row(form.prixAchatCom) }}
                     {{ form_row(form.prixVenteCom) }}
                     {{ form_row(form.conditionReg) }}
-                    {{ form_row(form.reduction) }}
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3">Valider la commande</button>
+            <div class="d-flex justify-content-end mt-3">
+                <button type="submit" class="btn btn-primary">Valider la commande</button>
+            </div>
         {{ form_end(form) }}
     {% else %}
         <div class="alert alert-warning text-center">

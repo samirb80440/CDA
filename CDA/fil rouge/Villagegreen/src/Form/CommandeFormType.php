@@ -59,29 +59,7 @@ class CommandeFormType extends AbstractType
                 'label' => 'Numéro de facture',
                 'required' => false,
             ])
-            ->add('reduction', NumberType::class, [
-                'label' => 'Réduction (%)',
-                'required' => false,
-            ])
-            ->add('indicReduc', CheckboxType::class, [
-                'label' => 'Réduction appliquée',
-                'required' => false,
-            ])
-            ->add('totalHtva', MoneyType::class, [
-                'label' => 'Total HTVA',
-                'currency' => 'EUR',
-            ])
-            ->add('tauxTva', NumberType::class, [
-                'label' => 'Taux de TVA (%)',
-            ])
-            ->add('totalTtc', MoneyType::class, [
-                'label' => 'Total TTC',
-                'currency' => 'EUR',
-            ])
-            ->add('prixHtva', MoneyType::class, [
-                'label' => 'Prix HTVA',
-                'currency' => 'EUR',
-            ])
+            
             ->add('comExp', CheckboxType::class, [
                 'label' => 'Commande expédiée',
                 'required' => false,

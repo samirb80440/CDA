@@ -13,16 +13,16 @@ class Commande
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?float $prixAchatCom = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?float $prixVenteCom = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $conditionReg = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
@@ -31,38 +31,35 @@ class Commande
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $numFact = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?float $reduction = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $comExp = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $numCom = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $nomCom = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateCom = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $totalTtc = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $tauxTva = null;
 
- 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $prixHtva = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $indicReduc = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $totalHtva = null;
-
-   
 
     #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'commandes')]
     private ?Utilisateur $utilisateur = null;
@@ -70,11 +67,14 @@ class Commande
     #[ORM\ManyToOne(targetEntity: Bondelivraison::class, inversedBy: 'commande')]
     private ?Bondelivraison $bondelivraison = null;
 
-    /**
-     * @var Collection<int, Contient>
-     */
     #[ORM\OneToMany(targetEntity: Contient::class, mappedBy: 'commande')]
     private Collection $contients;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse_livrai = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse_factu = null;
 
     public function __construct()
     {
@@ -325,5 +325,27 @@ class Commande
         return $this;
     }
 
-   
+    public function getAdresseLivrai(): ?string
+    {
+        return $this->adresse_livrai;
+    }
+
+    public function setAdresseLivrai(?string $adresse_livrai): static
+    {
+        $this->adresse_livrai = $adresse_livrai;
+
+        return $this;
+    }
+
+    public function getAdresseFactu(): ?string
+    {
+        return $this->adresse_factu;
+    }
+
+    public function setAdresseFactu(?string $adresse_factu): static
+    {
+        $this->adresse_factu = $adresse_factu;
+
+        return $this;
+    }
 }
