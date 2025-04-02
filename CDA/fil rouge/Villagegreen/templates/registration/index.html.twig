@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscrtiption{% endblock %}
+{% block title %}Inscrtiption
+{% endblock %}
 
 {% block body %}
-{{ form_errors(registrationForm) }}
+	{{ form_errors(registrationForm) }}
 
 	{{ form_start(registrationForm) }}
 
@@ -25,22 +26,21 @@
 			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.password) }}
 			</div>
-            <div class="col-12 mb-3">
+			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.catecli) }}
 			</div>
-            <div class="col-12 mb-3">
+			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.coeffcli) }}
 			</div>
 			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.agreeTerms) }}
 			</div>
-
-			<div class="col mt-5 mb-2 position-relative">
-				<button type="submit" class="btn btn-success rounded-pill position-absolute bottom-0 end-0 text-light">Enregistrer</button>
+			<div class="col-12 mb-3 d-flex justify-content-end">
+				{{ form_row(registrationForm.Save) }}
 			</div>
-
 		</div>
 	</div>
 
 	{{ form_end(registrationForm) }}
-{% endblock %} 
+{% endblock %}
+

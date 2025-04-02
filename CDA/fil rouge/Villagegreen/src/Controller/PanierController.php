@@ -10,7 +10,7 @@ use App\Entity\Produit;
 
 final class PanierController extends AbstractController
 {
-
+   
     private $panierService;
 
     public function __construct(PanierService $panierService)
@@ -23,6 +23,7 @@ final class PanierController extends AbstractController
     #[Route('/panier', name: 'app_panier')]
     public function index(): Response
     {
+     $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
      $panier = $this->panierService->ShowPanier();
      
      $dataPanier = $this->panierService->ShowDataPanier();

@@ -88,7 +88,7 @@ class RegistrationFormType extends AbstractType
             ->add('Save', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
-                    'class' => 'btn color-B09595 rounded-pill'
+                    'class' => 'btn-success rounded-pill text-light'
                 ],
                 'row_attr' => [
                     'class' => 'd-flex justify-content-end'

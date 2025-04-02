@@ -15,6 +15,7 @@ final class ContactController extends AbstractController
     #[Route('/contact', name: 'app_contact')]
     public function index(Request $request,  ContactManager $ContactManager): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $contact = new Contact();
         $utilisateur = $this->getUser();
 

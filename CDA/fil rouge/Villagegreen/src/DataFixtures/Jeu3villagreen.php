@@ -64,10 +64,10 @@ class Jeu3villagreen extends Fixture
     
         // 🔹 Liste des produits avec association aux catégories et fournisseurs
         $produitsData = [
-            [15.50, 'Guitare Electrique', 50, 'Gibson_SG_Standard_64_Maestro_CH_ULA_.jpg', 'Guitare Electrique', 'Une guitare électrique', 'Guitares', 1,1],
-            [25.00, 'Piano a queue', 200, 'Kawai_GL_10_Grand_Piano_.jpg', 'Produit B', 'Description détaillée du produit', 'Piano', 2,2],
-            [12.75, 'Batterie electronique', 150, "Millenium_MPS-850_E-Drum_Set_.jpg", 'Produit C', 'Description détaillée du produit C', 'Batterie', 3,3],
-            [18.00, 'Violoncelle', 20, 'Scala_Vilagio_L.V._Montagnana_Cello_.jpg', 'Violoncelle', 'Violoncelle professionnel avec un son riche.', 'Violon', 4,4]
+            [250.50, 'Guitare Electrique', 150, 'Gibson_SG_Standard_64_Maestro_CH_ULA_.jpg', 'Guitare Electrique', 'Une guitare électrique', 'Guitares', 1,1],
+            [400.00, 'Piano a queue', 200, 'Kawai_GL_10_Grand_Piano_.jpg', 'Produit B', 'Description détaillée du produit', 'Piano', 2,2],
+            [125.75, 'Batterie electronique', 150, "Millenium_MPS-850_E-Drum_Set_.jpg", 'Produit C', 'Description détaillée du produit C', 'Batterie', 3,3],
+            [500.00, 'Violoncelle', 200, 'Scala_Vilagio_L.V._Montagnana_Cello_.jpg', 'Violoncelle', 'Violoncelle professionnel avec un son riche.', 'Violon', 4,4]
         ];
     
         foreach ($produitsData as [$prix, $nom, $stock, $image, $libelleCourt, $libelleLong, $nomCategorie, $idFournisseur,$idsous_categorie]) {

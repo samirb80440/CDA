@@ -40,6 +40,17 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { route: "app_gestion", roles: ROLE_GESTION}
+        - { route: "app_gestion_produit_ajout", roles: ROLE_GESTION}
+        - { route: "app_registration", roles: ROLE_GESTION}
+        
+    
+    
+    
+    role_hierarchy:
+      ROLE_ADMIN: [ROLE_CLIENT,ROLE_ADMIN,ROLE_GESTION]
+      ROLE_GESTION: [ROLE_GESTION]
+      ROLE_CLIENT: [ROLE_USER]
 
 when@test:
     security:
