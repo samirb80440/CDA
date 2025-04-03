@@ -3,11 +3,23 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']],
+)]
 class Produit
 {
     #[ORM\Id]
@@ -16,21 +28,27 @@ class Produit
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Groups(['read'])]
     private ?int $prixAchat = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['read'])]
     private ?string $nomProd = null;
 
     #[ORM\Column]
+    #[Groups(['read'])]
     private ?int $stockprod = null;
 
     #[ORM\Column(length: 150)]
+    #[Groups(['read'])]
     private ?string $photoProduit = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['read'])]
     private ?string $LibCourtProd = null;
 
     #[ORM\Column(length: 200)]
+    #[Groups(['read'])]
     private ?string $libLongProd = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
