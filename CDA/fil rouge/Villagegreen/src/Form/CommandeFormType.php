@@ -33,13 +33,11 @@ class CommandeFormType extends AbstractType
                 'label' => 'Date de commande',
                 'widget' => 'single_text',
             ])
-            ->add('prixAchatCom', MoneyType::class, [
-                'label' => 'Prix d\'achat',
-                'currency' => 'EUR',
-            ])
+         
             ->add('prixVenteCom', MoneyType::class, [
                 'label' => 'Prix de vente',
                 'currency' => 'EUR',
+                'disabled' => true, // 🔒 champ non modifiable
             ])
             ->add('conditionReg', ChoiceType::class, [
                 'label' => 'Condition de règlement',
@@ -69,16 +67,8 @@ class CommandeFormType extends AbstractType
                 'choice_label' => 'nomcli', // Affiche le nom de l'utilisateur au lieu de l'ID
                 'label' => 'Utilisateur',
                 'placeholder' => 'Sélectionnez un utilisateur',
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Envoyer',
-                'attr' => [
-                    'class' => 'btn color-B09595 rounded-pill'
-                ],
-                'row_attr' => [
-                    'class' => 'd-flex justify-content-end'
-                ]
             ]);
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void

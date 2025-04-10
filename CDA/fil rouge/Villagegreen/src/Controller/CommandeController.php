@@ -37,14 +37,34 @@ class CommandeController extends AbstractController
     public function new(Request $request): Response
     {
         $panier = $this->panierService->ShowPanier();
+        $total = $this->panierService->getTotal();
 
         if (empty($panier)) {
             return $this->redirectToRoute('app_panier');
         }
 
         $commande = new Commande();
+        $commande->setPrixVenteCom($total);
         $commande->setUtilisateur($this->getUser());
         $commande->setDateCom(new \DateTime());
+
+        // Ajout : date de facturation = 5 jours après dateCom
+        $dateFact = (clone $commande->getDateCom())->modify('+5 days');
+        $commande->setDateFact($dateFact);
+
+        $lastCommande = $this->commandeRepo->findLast(); // à implémenter
+        $nextId = $lastCommande ? $lastCommande->getId() + 1 : 1;
+        $year = (new \DateTime())->format('Y');
+        $generatedNom = sprintf('COM-%s-%06d', $year, $nextId);
+
+        $prefix = 'FAC';
+        $date = (new \DateTime())->format('Ymd'); // ex: 20250410
+        $uniqueId = strtoupper(uniqid()); // ou tu peux faire un compteur
+        $numFact = $prefix . $date . substr($uniqueId, -5); // ex: FAC20250410A1B2C
+
+        $commande->setNumFact($numFact);
+
+        $commande->setNomCom($generatedNom);
         $commande->setNumCom(uniqid());
 
         $form = $this->createForm(CommandeFormType::class, $commande);
@@ -62,6 +82,7 @@ class CommandeController extends AbstractController
 
         return $this->render('commande/index.html.twig', [
             'form' => $form->createView(),
+            'sous_total' => $total,
         ]);
     }
 }
